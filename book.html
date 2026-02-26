@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Now — Cleaners Club</title>
-  <meta name="description" content="Book your professional cleaning session with Cleaners Club. Fill in your details and we'll take care of the rest.">
+  <title>Agendar — Cleaners Club</title>
+  <meta name="description" content="Agende sua sessão de limpeza profissional com o Cleaners Club. Preencha seus dados e cuidaremos do resto.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -122,16 +122,47 @@
       padding:12px 28px; font-size:14px; font-weight:700; font-family:inherit;
       color:#fff; background:#635bff; border:none; border-radius:12px;
       cursor:pointer; transition:all .25s; text-decoration:none;
+      min-height:48px; align-items:center;
     }
     .book-success-btn:hover { background:#4f46e5; transform:translateY(-2px); }
 
     @media(max-width:768px) {
-      .book-nav { padding:14px 20px; }
-      .book-container { grid-template-columns:1fr; }
-      .book-info { padding:32px 24px; }
-      .book-form-side { padding:32px 24px; }
-      .book-row { grid-template-columns:1fr; }
-      .book-wrapper { padding:32px 16px 60px; }
+      .book-nav { padding:12px 16px; }
+      .book-logo { font-size:17px; }
+      .book-logo svg { width:32px; height:32px; }
+      .book-back { font-size:13px; min-height:44px; align-items:center; padding:8px 0; }
+      .book-wrapper { padding:24px 16px 48px; min-height:auto; }
+      .book-container { grid-template-columns:1fr; border-radius:16px; }
+      .book-info { padding:28px 20px; }
+      .book-info-title { font-size:24px; margin-bottom:10px; }
+      .book-info-sub { font-size:14px; margin-bottom:24px; }
+      .book-info-features { gap:14px; margin-bottom:28px; }
+      .book-info-feat-icon { width:36px; height:36px; min-width:36px; }
+      .book-info-feat-text h4 { font-size:13px; }
+      .book-info-feat-text p { font-size:12px; }
+      .book-info-trust { flex-wrap:wrap; padding-top:20px; gap:10px; }
+      .book-info-trust-text { font-size:12px; }
+      .book-form-side { padding:28px 20px; }
+      .book-form-title { font-size:20px; }
+      .book-form-sub { font-size:13px; margin-bottom:20px; }
+      .book-field { margin-bottom:14px; }
+      .book-input, .book-select, .book-textarea { padding:12px 14px; font-size:16px; min-height:48px; }
+      .book-row { grid-template-columns:1fr; gap:0; }
+      .book-submit { min-height:52px; padding:16px; font-size:15px; margin-top:4px; }
+      .book-success { padding:40px 16px; }
+      .book-success h2 { font-size:20px; }
+      .book-success p { font-size:14px; }
+      .book-success-btn { min-height:48px; width:100%; justify-content:center; }
+    }
+    @media(max-width:480px) {
+      .book-nav { padding:10px 12px; }
+      .book-logo { font-size:15px; }
+      .book-logo svg { width:28px; height:28px; }
+      .book-wrapper { padding:16px 12px 40px; }
+      .book-info { padding:24px 16px; }
+      .book-info-title { font-size:20px; }
+      .book-form-side { padding:24px 16px; }
+      .book-form-title { font-size:18px; }
     }
   </style>
 </head>
@@ -151,7 +182,7 @@
     </a>
     <a class="book-back" href="index.html">
       <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Back to home
+      Voltar ao início
     </a>
   </nav>
 
@@ -160,8 +191,8 @@
 
       <div class="book-info">
         <div>
-          <h1 class="book-info-title">Book Your<br>Cleaning Session</h1>
-          <p class="book-info-sub">Fill in your details below and our team will confirm your booking within 24 hours. No commitments, cancel anytime.</p>
+          <h1 class="book-info-title">Agende sua<br>Sessão de Limpeza</h1>
+          <p class="book-info-sub">Preencha seus dados abaixo e nossa equipe confirmará seu agendamento em até 24 horas. Sem compromisso, cancele quando quiser.</p>
 
           <div class="book-info-features">
             <div class="book-info-feat">
@@ -169,8 +200,8 @@
                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <div class="book-info-feat-text">
-                <h4>Vetted Professionals</h4>
-                <p>Background-checked, insured, and trained to the highest standards.</p>
+                <h4>Profissionais Verificados</h4>
+                <p>Com antecedentes verificados, segurados e treinados nos mais altos padrões.</p>
               </div>
             </div>
             <div class="book-info-feat">
@@ -178,8 +209,8 @@
                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <div class="book-info-feat-text">
-                <h4>Flexible Scheduling</h4>
-                <p>Choose a day and time that works for you. Weekends included.</p>
+                <h4>Agendamento Flexível</h4>
+                <p>Escolha o dia e horário que funcionam para você. Fins de semana incluídos.</p>
               </div>
             </div>
             <div class="book-info-feat">
@@ -187,8 +218,8 @@
                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
               </div>
               <div class="book-info-feat-text">
-                <h4>Satisfaction Guaranteed</h4>
-                <p>Not happy? We'll re-clean for free within 48 hours.</p>
+                <h4>Satisfação Garantida</h4>
+                <p>Não ficou satisfeito? Refazemos a limpeza gratuitamente em até 48 horas.</p>
               </div>
             </div>
           </div>
@@ -203,77 +234,77 @@
             <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .5l2.47 5 5.53.8-4 3.9.94 5.5L8 13.2l-4.94 2.5.94-5.5-4-3.9 5.53-.8L8 .5z"/></svg>
           </div>
           <div class="book-info-trust-text">
-            <strong>4.97</strong> avg. rating from <strong>2,847</strong> clients
+            <strong>4,97</strong> nota média de <strong>2.847</strong> clientes
           </div>
         </div>
       </div>
 
       <div class="book-form-side">
         <form id="bookForm" class="book-form-content">
-          <h2 class="book-form-title">Your Details</h2>
-          <p class="book-form-sub">We'll use this information to schedule your cleaning.</p>
+          <h2 class="book-form-title">Seus Dados</h2>
+          <p class="book-form-sub">Usaremos essas informações para agendar sua limpeza.</p>
 
           <div class="book-row">
             <div class="book-field">
-              <label class="book-label" for="firstName">First Name *</label>
-              <input class="book-input" type="text" id="firstName" name="firstName" placeholder="John" required>
+              <label class="book-label" for="firstName">Nome *</label>
+              <input class="book-input" type="text" id="firstName" name="firstName" placeholder="João" required>
             </div>
             <div class="book-field">
-              <label class="book-label" for="lastName">Last Name *</label>
-              <input class="book-input" type="text" id="lastName" name="lastName" placeholder="Smith" required>
+              <label class="book-label" for="lastName">Sobrenome *</label>
+              <input class="book-input" type="text" id="lastName" name="lastName" placeholder="Silva" required>
             </div>
           </div>
 
           <div class="book-field">
-            <label class="book-label" for="email">Email Address *</label>
-            <input class="book-input" type="email" id="email" name="email" placeholder="john@example.com" required>
+            <label class="book-label" for="email">E-mail *</label>
+            <input class="book-input" type="email" id="email" name="email" placeholder="joao@exemplo.com" required>
           </div>
 
           <div class="book-field">
-            <label class="book-label" for="phone">Phone Number *</label>
-            <input class="book-input" type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+            <label class="book-label" for="phone">Telefone *</label>
+            <input class="book-input" type="tel" id="phone" name="phone" placeholder="(11) 91234-5678" required>
           </div>
 
           <div class="book-field">
-            <label class="book-label" for="address">Home Address *</label>
-            <input class="book-input" type="text" id="address" name="address" placeholder="123 Main Street, Apt 4B, City, State" required>
+            <label class="book-label" for="address">Endereço *</label>
+            <input class="book-input" type="text" id="address" name="address" placeholder="Rua das Flores, 123, Apto 4B, São Paulo, SP" required>
           </div>
 
           <div class="book-row">
             <div class="book-field">
-              <label class="book-label" for="service">Service Type</label>
+              <label class="book-label" for="service">Tipo de Serviço</label>
               <select class="book-select" id="service" name="service">
-                <option value="regular">Regular Clean</option>
-                <option value="deep">Deep Clean</option>
-                <option value="move">Move-in / Move-out</option>
-                <option value="office">Office Clean</option>
+                <option value="regular">Limpeza Regular</option>
+                <option value="deep">Limpeza Profunda</option>
+                <option value="move">Entrada / Saída</option>
+                <option value="office">Limpeza Comercial</option>
               </select>
             </div>
             <div class="book-field">
-              <label class="book-label" for="bedrooms">Bedrooms</label>
+              <label class="book-label" for="bedrooms">Quartos</label>
               <select class="book-select" id="bedrooms" name="bedrooms">
-                <option value="1">1 Bedroom</option>
-                <option value="2" selected>2 Bedrooms</option>
-                <option value="3">3 Bedrooms</option>
-                <option value="4">4 Bedrooms</option>
-                <option value="5">5+ Bedrooms</option>
+                <option value="1">1 Quarto</option>
+                <option value="2" selected>2 Quartos</option>
+                <option value="3">3 Quartos</option>
+                <option value="4">4 Quartos</option>
+                <option value="5">5+ Quartos</option>
               </select>
             </div>
           </div>
 
           <div class="book-field">
-            <label class="book-label" for="notes">Additional Notes</label>
-            <textarea class="book-textarea" id="notes" name="notes" placeholder="Any special instructions, pets, access codes..."></textarea>
+            <label class="book-label" for="notes">Observações Adicionais</label>
+            <textarea class="book-textarea" id="notes" name="notes" placeholder="Instruções especiais, pets, códigos de acesso..."></textarea>
           </div>
 
           <button class="book-submit" type="submit">
-            Submit Booking Request
+            Enviar Solicitação
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </button>
 
           <div class="book-secure">
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-            Your data is secure and never shared with third parties
+            Seus dados estão seguros e nunca são compartilhados com terceiros
           </div>
         </form>
 
@@ -281,9 +312,9 @@
           <svg class="book-success-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
-          <h2>Booking Submitted!</h2>
-          <p>Thank you for choosing Cleaners Club. Our team will review your request and get back to you within 24 hours to confirm the details.</p>
-          <a class="book-success-btn" href="index.html">Back to Home</a>
+          <h2>Solicitação Enviada!</h2>
+          <p>Obrigado por escolher o Cleaners Club. Nossa equipe analisará sua solicitação e entrará em contato em até 24 horas para confirmar os detalhes.</p>
+          <a class="book-success-btn" href="index.html">Voltar ao Início</a>
         </div>
       </div>
 
