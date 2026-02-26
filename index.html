@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cleaners Club — Professional Home Cleaning Services</title>
-  <meta name="description" content="Join thousands of homeowners who trust Cleaners Club for professional home cleaning. Vetted cleaners, flexible scheduling, spotless results.">
-  <meta property="og:title" content="Cleaners Club — Professional Home Cleaning Services">
-  <meta property="og:description" content="Book vetted cleaning professionals. Flexible scheduling, eco-friendly products, satisfaction guaranteed.">
+  <title>Cleaners Club — Serviços Profissionais de Limpeza</title>
+  <meta name="description" content="Junte-se a milhares de proprietários que confiam no Cleaners Club para limpeza profissional. Profissionais verificados, agendamento flexível, resultados impecáveis.">
+  <meta property="og:title" content="Cleaners Club — Serviços Profissionais de Limpeza">
+  <meta property="og:description" content="Agende profissionais de limpeza verificados. Horários flexíveis, produtos ecológicos, satisfação garantida.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -489,46 +489,97 @@
       50% { transform:translateY(-30px) scale(1.15); opacity:.9; }
     }
 
+    /* ─── HAMBURGER & MOBILE MENU ─── */
+    .cc-hamburger {
+      display:none; flex-direction:column; justify-content:center; gap:5px;
+      width:44px; height:44px; border:none; background:none; cursor:pointer;
+      padding:8px; border-radius:8px; transition:background .2s; flex-shrink:0;
+    }
+    .cc-hamburger:hover { background:rgba(255,255,255,.15); }
+    .cc-nav.scrolled .cc-hamburger:hover { background:rgba(0,0,0,.06); }
+    .cc-hamburger span {
+      display:block; width:22px; height:2px; border-radius:2px;
+      background:#fff; transition:transform .3s, opacity .3s; transform-origin:center;
+    }
+    .cc-nav.scrolled .cc-hamburger span { background:#0a2540; }
+    .cc-hamburger.active span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .cc-hamburger.active span:nth-child(2) { opacity:0; transform:scaleX(0); }
+    .cc-hamburger.active span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    .cc-mobile-menu {
+      position:fixed; inset:0; z-index:998;
+      background:rgba(10,37,64,.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+      opacity:0; pointer-events:none; transition:opacity .3s; overflow-y:auto;
+      padding:80px 24px 40px;
+    }
+    .cc-mobile-menu.active { opacity:1; pointer-events:all; }
+    .cc-mobile-menu a {
+      font-size:clamp(22px,7vw,30px); font-weight:800; color:rgba(255,255,255,.7);
+      padding:14px 24px; border-radius:12px; transition:all .2s; letter-spacing:-.5px;
+      text-align:center; width:100%; max-width:340px;
+    }
+    .cc-mobile-menu a:hover { color:#fff; background:rgba(255,255,255,.08); }
+    .cc-mm-divider { width:40px; height:1px; background:rgba(255,255,255,.12); margin:12px auto; }
+    .cc-mobile-menu .cc-mm-book {
+      margin-top:8px; background:#635bff; color:#fff !important;
+      border-radius:16px; box-shadow:0 8px 24px rgba(99,91,255,.4);
+      padding:16px 40px !important;
+    }
+    .cc-mobile-menu .cc-mm-book:hover { background:#4f46e5 !important; color:#fff !important; }
+
     /* ─── RESPONSIVE ─── */
     @media(max-width:1024px) {
       .cc-hero-inner { grid-template-columns:1fr; }
       .cc-hero-right { display:none; }
-      .cc-features-grid,.cc-how-steps,.cc-pricing-grid,.cc-test-grid { grid-template-columns:1fr; max-width:500px; }
+      .cc-features-grid,.cc-how-steps,.cc-pricing-grid,.cc-test-grid { grid-template-columns:1fr; max-width:640px; margin-left:auto; margin-right:auto; }
       .cc-gallery-grid { grid-template-columns:1fr 1fr; }
       .cc-gallery-item:nth-child(1) { grid-row:auto; aspect-ratio:4/3; }
       .cc-footer-grid { grid-template-columns:1fr 1fr; }
       .cc-features,.cc-how,.cc-pricing,.cc-testimonials,.cc-gallery,.cc-compare { padding-top:80px; padding-bottom:80px; }
     }
     @media(max-width:768px) {
+      /* Nav */
       .cc-nav { padding:12px 16px; }
       .cc-nav-links { display:none; }
+      .cc-nav-signin { display:none; }
+      .cc-hamburger { display:flex; }
       .cc-logo { font-size:17px; }
       .cc-logo svg { width:32px; height:32px; }
       .cc-nav-quote { padding:10px 16px; font-size:13px; min-height:44px; display:inline-flex; align-items:center; }
-      .cc-hero { padding:0 16px 48px; min-height:auto; }
-      .cc-announce { padding-top:70px; }
-      .cc-announce-pill { margin-left:16px; margin-right:16px; font-size:12px; padding:10px 14px; flex-wrap:wrap; }
+      /* Hero */
+      .cc-hero { padding:0 16px 48px; min-height:100svh; }
+      .cc-announce { padding-top:72px; }
+      .cc-announce-pill { margin-left:0; margin-right:0; font-size:12px; padding:10px 14px; flex-wrap:wrap; max-width:100%; }
       .cc-announce-badge { font-size:10px; padding:2px 8px; }
-      .cc-hero-inner { padding-top:24px; gap:24px; }
-      .cc-hero-title { font-size:clamp(32px,8vw,42px); margin-bottom:16px; }
-      .cc-hero-desc { font-size:15px; margin-bottom:24px; }
+      .cc-hero-inner { padding-top:20px; gap:24px; }
+      .cc-hero-title { font-size:clamp(30px,8vw,42px); margin-bottom:16px; }
+      .cc-hero-desc { font-size:15px; margin-bottom:24px; max-width:100%; }
       .cc-hero-form { flex-direction:column; max-width:100%; gap:12px; }
       .cc-hero-input { padding:14px 18px; font-size:16px; min-height:48px; }
-      .cc-hero-btn { justify-content:center; padding:14px 24px; min-height:48px; font-size:15px; }
+      .cc-hero-btn { justify-content:center; padding:14px 24px; min-height:48px; font-size:15px; width:100%; }
+      /* Sections */
       .cc-features,.cc-how,.cc-pricing,.cc-testimonials,.cc-cta,.cc-footer,.cc-gallery,.cc-compare { padding-left:16px; padding-right:16px; }
       .cc-features,.cc-how,.cc-pricing,.cc-testimonials,.cc-gallery,.cc-compare { padding-top:56px; padding-bottom:56px; }
+      .cc-section-title { font-size:clamp(22px,6vw,32px); margin-bottom:12px; }
+      .cc-section-desc { font-size:15px; margin-bottom:40px; max-width:100%; }
+      .cc-container { padding-left:0; padding-right:0; }
+      .cc-section-head { margin-bottom:40px !important; }
+      /* Grids → single col */
+      .cc-features-grid,.cc-how-steps,.cc-pricing-grid,.cc-test-grid { max-width:100%; margin-left:0; margin-right:0; }
+      /* Gallery */
+      .cc-gallery-grid { grid-template-columns:1fr; }
+      .cc-gallery-item:nth-child(1) { aspect-ratio:4/3; }
+      /* Compare */
+      .cc-compare-wrapper { margin-left:0; margin-right:0; }
+      /* CTA */
       .cc-cta { padding:56px 16px; }
+      .cc-cta h2 { font-size:clamp(24px,6vw,34px); }
+      .cc-cta p { font-size:15px; margin-bottom:32px; max-width:100%; }
       .cc-cta-form { flex-direction:column; max-width:100%; gap:12px; }
       .cc-cta-form .cc-hero-input { width:100%; }
       .cc-cta-form .cc-hero-btn { width:100%; justify-content:center; }
-      .cc-section-title { font-size:clamp(24px,6vw,32px); margin-bottom:12px; }
-      .cc-section-desc { font-size:15px; margin-bottom:40px; }
-      .cc-features-grid,.cc-how-steps,.cc-pricing-grid,.cc-test-grid { max-width:100%; }
-      .cc-gallery-grid { grid-template-columns:1fr; }
-      .cc-gallery-item:nth-child(1) { aspect-ratio:4/3; }
-      .cc-footer { padding:48px 16px 32px; }
-      .cc-footer-grid { grid-template-columns:1fr; gap:32px; margin-bottom:40px; }
-      .cc-footer-bottom { flex-direction:column; gap:12px; text-align:center; padding-top:24px; font-size:12px; }
+      /* Cards */
       .cc-feature-card { padding:24px 20px; }
       .cc-feature-card h3 { font-size:16px; }
       .cc-feature-card p { font-size:14px; }
@@ -540,23 +591,23 @@
       .cc-price-cta { min-height:48px; padding:14px; }
       .cc-test-card { padding:24px 20px; }
       .cc-test-card blockquote { font-size:14px; }
-      .cc-cta h2 { font-size:clamp(26px,6vw,34px); }
-      .cc-cta p { font-size:15px; margin-bottom:32px; }
-      .cc-container { padding-left:0; padding-right:0; }
-      .cc-section-head { margin-bottom:40px !important; }
-      .cc-compare-wrapper { margin-left:0; margin-right:0; }
+      /* Footer */
+      .cc-footer { padding:48px 16px 32px; }
+      .cc-footer-grid { grid-template-columns:1fr; gap:32px; margin-bottom:40px; }
+      .cc-footer-bottom { flex-direction:column; gap:12px; text-align:center; padding-top:24px; font-size:12px; }
     }
     @media(max-width:480px) {
       .cc-nav { padding:10px 12px; }
       .cc-logo { font-size:15px; gap:8px; }
       .cc-logo svg { width:28px; height:28px; }
-      .cc-announce-pill { margin-left:12px; margin-right:12px; font-size:11px; }
-      .cc-hero-title { font-size:28px; }
+      .cc-nav-quote { padding:8px 14px; font-size:12px; }
+      .cc-announce-pill { font-size:11px; padding:8px 12px; }
+      .cc-hero-title { font-size:clamp(26px,7.5vw,34px); }
       .cc-hero-desc { font-size:14px; }
       .cc-features,.cc-how,.cc-pricing,.cc-testimonials,.cc-gallery,.cc-compare { padding-top:40px; padding-bottom:40px; }
-      .cc-section-title { font-size:22px; }
-      .cc-section-desc { margin-bottom:32px; font-size:14px; }
-      .cc-compare-wrapper { border-radius:12px; min-height:220px; aspect-ratio:4/3; }
+      .cc-section-title { font-size:clamp(20px,5.5vw,26px); }
+      .cc-section-desc { margin-bottom:28px; font-size:14px; }
+      .cc-compare-wrapper { border-radius:12px; min-height:auto; aspect-ratio:4/3; }
       .cc-compare-label { font-size:10px; padding:6px 12px; top:12px; }
       .cc-compare-label-before { left:12px; }
       .cc-compare-label-after { right:12px; }
@@ -565,6 +616,9 @@
       .cc-pricing-grid { gap:20px; }
       .cc-footer-brand p { font-size:13px; }
       .cc-footer-col a { margin-bottom:10px; padding:4px 0; min-height:44px; display:flex; align-items:center; }
+      .cc-feature-card:hover { transform:none; }
+      .cc-price-card:hover { transform:none; }
+      .cc-test-card:hover { transform:none; }
     }
 </head>
 <body>
@@ -584,23 +638,37 @@
       Cleaners Club
     </a>
     <div class="cc-nav-links">
-      <a href="#services">Services</a>
-      <a href="#compare">Before &amp; After</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#reviews">Reviews</a>
+      <a href="#services">Serviços</a>
+      <a href="#compare">Antes e Depois</a>
+      <a href="#pricing">Preços</a>
+      <a href="#reviews">Avaliações</a>
     </div>
     <div class="cc-nav-right">
-      <a class="cc-nav-signin" href="#">Sign in <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a class="cc-nav-quote" href="book.html">Book now <svg width="12" height="12" fill="none" viewBox="0 0 12 12" style="vertical-align:middle;margin-left:2px"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="cc-nav-signin" href="#">Entrar <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="cc-nav-quote" href="book.html">Agendar <svg width="12" height="12" fill="none" viewBox="0 0 12 12" style="vertical-align:middle;margin-left:2px"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="cc-hamburger" id="ccHamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+
+  <!-- ─── MOBILE MENU ─── -->
+  <div class="cc-mobile-menu" id="ccMobileMenu">
+    <a href="#services">Serviços</a>
+    <a href="#compare">Antes e Depois</a>
+    <a href="#pricing">Preços</a>
+    <a href="#reviews">Avaliações</a>
+    <div class="cc-mm-divider"></div>
+    <a href="#">Entrar</a>
+    <a href="book.html" class="cc-mm-book">Agendar agora</a>
+  </div>
 
   <!-- ─── HERO ─── -->
   <section class="cc-hero">
     <div class="cc-announce">
       <div class="cc-announce-pill">
-        <span class="cc-announce-badge">New 2026</span>
-        Spring cleaning season &mdash; 20% off first booking
+        <span class="cc-announce-badge">Novo 2026</span>
+        Temporada de limpeza &mdash; 20% de desconto na primeira reserva
         <svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M5.5 3l4 4-4 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </div>
@@ -608,14 +676,14 @@
     <div class="cc-hero-inner">
       <div class="cc-hero-left">
         <h1 class="cc-hero-title">
-          Professional cleaning<br><em>to elevate your</em><br>home
+          Limpeza profissional<br><em>para valorizar</em><br>seu lar
         </h1>
         <p class="cc-hero-desc">
-          Join thousands of homeowners who trust Cleaners Club to keep their spaces spotless. Book vetted professionals, enjoy flexible scheduling, and come home to perfection.
+          Junte-se a milhares de proprietários que confiam no Cleaners Club para manter seus espaços impecáveis. Agende profissionais verificados, tenha horários flexíveis e volte para um lar perfeito.
         </p>
         <div class="cc-hero-form">
-          <input class="cc-hero-input" type="email" placeholder="Email address">
-          <a href="book.html" class="cc-hero-btn">Book now <svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <input class="cc-hero-input" type="email" placeholder="Seu e-mail">
+          <a href="book.html" class="cc-hero-btn">Agendar agora <svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
 
@@ -648,12 +716,12 @@
             <div class="cc-hero-card-icon">
               <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3v6M9 6l4-3 4 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/><rect x="4" y="11" width="18" height="11" rx="3" stroke="#fff" stroke-width="2"/><path d="M10 15.5h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h4>Deep Clean Package</h4>
-            <p>Starting at $120/session</p>
-            <a href="book.html" class="cc-hero-card-btn">Book Instantly</a>
+            <h4>Pacote Limpeza Profunda</h4>
+            <p>A partir de R$120/sessão</p>
+            <a href="book.html" class="cc-hero-card-btn">Agendar Agora</a>
             <div class="cc-hero-card-stats">
-              <div class="cc-hero-card-stat"><strong>2,847</strong><span>Homes cleaned</span></div>
-              <div class="cc-hero-card-stat"><strong>4.97</strong><span>Avg. rating</span></div>
+              <div class="cc-hero-card-stat"><strong>2.847</strong><span>Lares limpos</span></div>
+              <div class="cc-hero-card-stat"><strong>4,97</strong><span>Avaliação média</span></div>
             </div>
           </div>
         </div>
@@ -664,29 +732,29 @@
   <!-- ─── GALLERY ─── -->
   <section class="cc-gallery" id="gallery">
     <div class="cc-container">
-      <div class="cc-section-label">Our Results</div>
-      <h2 class="cc-section-title">Homes we've transformed</h2>
-      <p class="cc-section-desc">Every clean is a masterpiece. Here are some of the spaces we've brought back to life.</p>
+      <div class="cc-section-label">Nossos Resultados</div>
+      <h2 class="cc-section-title">Lares que transformamos</h2>
+      <p class="cc-section-desc">Cada limpeza é uma obra de arte. Veja alguns dos espaços que trouxemos de volta à vida.</p>
       <div class="cc-gallery-grid">
         <div class="cc-gallery-item" data-cc-anim>
           <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=1000&fit=crop&q=80" alt="Modern clean living room" loading="lazy">
-          <div class="cc-gallery-overlay"><span>Modern Living Room</span></div>
+          <div class="cc-gallery-overlay"><span>Sala de Estar Moderna</span></div>
         </div>
         <div class="cc-gallery-item" data-cc-anim>
-          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=450&fit=crop&q=80" alt="Spotless kitchen" loading="lazy">
-          <div class="cc-gallery-overlay"><span>Spotless Kitchen</span></div>
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=450&fit=crop&q=80" alt="Cozinha impecável" loading="lazy">
+          <div class="cc-gallery-overlay"><span>Cozinha Impecável</span></div>
         </div>
         <div class="cc-gallery-item" data-cc-anim>
-          <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=450&fit=crop&q=80" alt="Pristine bathroom" loading="lazy">
-          <div class="cc-gallery-overlay"><span>Pristine Bathroom</span></div>
+          <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=450&fit=crop&q=80" alt="Banheiro pristino" loading="lazy">
+          <div class="cc-gallery-overlay"><span>Banheiro Pristino</span></div>
         </div>
         <div class="cc-gallery-item" data-cc-anim>
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=450&fit=crop&q=80" alt="Clean bedroom" loading="lazy">
-          <div class="cc-gallery-overlay"><span>Serene Bedroom</span></div>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=450&fit=crop&q=80" alt="Quarto sereno" loading="lazy">
+          <div class="cc-gallery-overlay"><span>Quarto Sereno</span></div>
         </div>
         <div class="cc-gallery-item" data-cc-anim>
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=450&fit=crop&q=80" alt="Bright dining area" loading="lazy">
-          <div class="cc-gallery-overlay"><span>Bright Dining Area</span></div>
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=450&fit=crop&q=80" alt="Área de jantar iluminada" loading="lazy">
+          <div class="cc-gallery-overlay"><span>Área de Jantar Iluminada</span></div>
         </div>
       </div>
     </div>
@@ -696,10 +764,10 @@
   <section class="cc-compare" id="compare">
     <div class="cc-container">
       <div style="text-align:center; margin-bottom:64px;" class="cc-section-head">
-        <div class="cc-section-label">See The Difference</div>
-        <h2 class="cc-section-title">Drag to reveal the transformation</h2>
+        <div class="cc-section-label">Veja a Diferença</div>
+        <h2 class="cc-section-title">Arraste para revelar a transformação</h2>
         <p class="cc-section-desc" style="margin-left:auto;margin-right:auto;">
-          Slide left and right to see how Cleaners Club transforms spaces from cluttered to pristine.
+          Deslize para a esquerda e direita para ver como o Cleaners Club transforma ambientes bagunçados em impecáveis.
         </p>
       </div>
       <div class="cc-compare-wrapper" id="ccCompare">
@@ -718,8 +786,8 @@
             <svg viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="#635bff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
-        <span class="cc-compare-label cc-compare-label-before">BEFORE</span>
-        <span class="cc-compare-label cc-compare-label-after">AFTER</span>
+        <span class="cc-compare-label cc-compare-label-before">ANTES</span>
+        <span class="cc-compare-label cc-compare-label-after">DEPOIS</span>
       </div>
     </div>
   </section>
@@ -727,51 +795,51 @@
   <!-- ─── FEATURES ─── -->
   <section class="cc-features" id="services">
     <div class="cc-container">
-      <div class="cc-section-label">Why Cleaners Club</div>
-      <h2 class="cc-section-title">Everything you need for<br>a spotless home</h2>
-      <p class="cc-section-desc">We handle the scrubbing so you can focus on living. Designed to fit your lifestyle, schedule, and standards.</p>
+      <div class="cc-section-label">Por que Cleaners Club</div>
+      <h2 class="cc-section-title">Tudo que você precisa para<br>um lar impecável</h2>
+      <p class="cc-section-desc">Cuidamos da limpeza para você focar no que importa. Pensado para se adaptar ao seu estilo de vida, horário e padrão.</p>
       <div class="cc-features-grid">
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#e6f9ed,#c1f0d4)">
             <svg viewBox="0 0 26 26" fill="none"><path d="M13 3v6M9 6l4-3 4 3" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="11" width="18" height="11" rx="3" stroke="#1ea672" stroke-width="2"/><path d="M10 15.5h6" stroke="#1ea672" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <h3>Deep Cleaning</h3>
-          <p>Our signature top-to-bottom deep clean reaches every corner, crevice, and surface your home has been hiding from.</p>
+          <h3>Limpeza Profunda</h3>
+          <p>Nossa limpeza completa de cima a baixo alcança cada canto, fresta e superfície que seu lar escondia.</p>
         </div>
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">
             <svg viewBox="0 0 26 26" fill="none"><path d="M4 20l4-8 4 5 4-9 6 12" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="6" r="3" stroke="#7c3aed" stroke-width="2"/></svg>
           </div>
-          <h3>Recurring Plans</h3>
-          <p>Set it and forget it. Weekly, bi-weekly, or monthly plans that keep your home consistently immaculate.</p>
+          <h3>Planos Recorrentes</h3>
+          <p>Agende e esqueça. Planos semanais, quinzenais ou mensais que mantêm seu lar sempre impecável.</p>
         </div>
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2)">
             <svg viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9" stroke="#f57c00" stroke-width="2"/><path d="M13 8v5l3.5 3.5" stroke="#f57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Same-Day Booking</h3>
-          <p>Need it cleaned today? Our on-demand service connects you with available professionals within hours.</p>
+          <h3>Agendamento no Mesmo Dia</h3>
+          <p>Precisa limpar hoje? Nosso serviço sob demanda conecta você a profissionais disponíveis em horas.</p>
         </div>
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">
             <svg viewBox="0 0 26 26" fill="none"><path d="M13 3l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z" stroke="#0284c7" stroke-width="2" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Vetted Professionals</h3>
-          <p>Every cleaner is background-checked, trained, and rated by real customers. Your trust and safety come first.</p>
+          <h3>Profissionais Verificados</h3>
+          <p>Cada profissional tem antecedentes verificados, treinamento e avaliações reais de clientes. Sua confiança e segurança em primeiro lugar.</p>
         </div>
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
             <svg viewBox="0 0 26 26" fill="none"><path d="M6 13a7 7 0 1 1 14 0" stroke="#e91e63" stroke-width="2" stroke-linecap="round"/><path d="M10 13v6a3 3 0 0 0 6 0v-6" stroke="#e91e63" stroke-width="2" stroke-linecap="round"/><circle cx="13" cy="9" r="2" stroke="#e91e63" stroke-width="2"/></svg>
           </div>
-          <h3>Eco-Friendly Products</h3>
-          <p>We use non-toxic, biodegradable cleaning products that are safe for your family, pets, and the planet.</p>
+          <h3>Produtos Ecológicos</h3>
+          <p>Usamos produtos de limpeza não tóxicos e biodegradáveis, seguros para sua família, pets e o planeta.</p>
         </div>
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#e8eaf6,#c5cae9)">
             <svg viewBox="0 0 26 26" fill="none"><rect x="4" y="4" width="18" height="18" rx="4" stroke="#3949ab" stroke-width="2"/><path d="M9 13l3 3 5-6" stroke="#3949ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Satisfaction Guarantee</h3>
-          <p>Not 100% happy? We&rsquo;ll re-clean for free within 24 hours. Your satisfaction is our only metric.</p>
+          <h3>Garantia de Satisfação</h3>
+          <p>Não ficou 100% satisfeito? Refazemos a limpeza gratuitamente em até 24 horas. Sua satisfação é nossa única métrica.</p>
         </div>
       </div>
     </div>
@@ -780,24 +848,24 @@
   <!-- ─── HOW IT WORKS ─── -->
   <section class="cc-how" id="how">
     <div class="cc-container">
-      <div class="cc-section-label">How It Works</div>
-      <h2 class="cc-section-title">Sparkling clean in 3 simple steps</h2>
-      <p class="cc-section-desc">From booking to a freshly cleaned home, the entire process takes less than a minute to set up.</p>
+      <div class="cc-section-label">Como Funciona</div>
+      <h2 class="cc-section-title">Brilhante em 3 passos simples</h2>
+      <p class="cc-section-desc">Do agendamento ao lar limpo, todo o processo leva menos de um minuto para configurar.</p>
       <div class="cc-how-steps">
         <div class="cc-step" data-cc-anim>
           <div class="cc-step-num">1</div>
-          <h3>Choose Your Service</h3>
-          <p>Pick from deep clean, standard, move-in/out, or customize your own package to match your needs.</p>
+          <h3>Escolha seu Serviço</h3>
+          <p>Opte por limpeza profunda, padrão, entrada/saída ou personalize seu próprio pacote.</p>
         </div>
         <div class="cc-step" data-cc-anim>
           <div class="cc-step-num">2</div>
-          <h3>Pick a Date &amp; Time</h3>
-          <p>Select a slot that works for you. We offer flexible scheduling including weekends and evenings.</p>
+          <h3>Escolha a Data e Horário</h3>
+          <p>Selecione um horário que funcione para você. Oferecemos agendamento flexível, incluindo fins de semana e noites.</p>
         </div>
         <div class="cc-step" data-cc-anim>
           <div class="cc-step-num">3</div>
-          <h3>Relax &amp; Enjoy</h3>
-          <p>Our vetted professional arrives on time and transforms your space. Come home to perfection.</p>
+          <h3>Relaxe e Aproveite</h3>
+          <p>Nosso profissional verificado chega no horário e transforma seu espaço. Volte para a perfeição.</p>
         </div>
       </div>
     </div>
@@ -807,49 +875,49 @@
   <section class="cc-pricing" id="pricing">
     <div class="cc-container">
       <div style="text-align:center;margin-bottom:64px;" class="cc-section-head">
-        <div class="cc-section-label">Pricing</div>
-        <h2 class="cc-section-title">Simple, transparent pricing</h2>
-        <p class="cc-section-desc" style="margin-left:auto;margin-right:auto;">No hidden fees, no surprise charges. Pick the plan that fits your home and budget.</p>
+        <div class="cc-section-label">Preços</div>
+        <h2 class="cc-section-title">Preços simples e transparentes</h2>
+        <p class="cc-section-desc" style="margin-left:auto;margin-right:auto;">Sem taxas ocultas, sem cobranças surpresa. Escolha o plano que se encaixa no seu lar e orçamento.</p>
       </div>
       <div class="cc-pricing-grid">
         <div class="cc-price-card" data-cc-anim>
-          <h3>Standard Clean</h3>
-          <div class="cc-price">$89<span>/visit</span></div>
-          <div class="cc-price-desc">Perfect for regular maintenance</div>
+          <h3>Limpeza Padrão</h3>
+          <div class="cc-price">R$89<span>/visita</span></div>
+          <div class="cc-price-desc">Perfeito para manutenção regular</div>
           <ul class="cc-price-features">
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>All rooms dusted &amp; vacuumed</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Kitchen &amp; bathroom sanitized</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Floors mopped &amp; polished</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 2 bedrooms</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Todos os cômodos espanados e aspirados</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Cozinha e banheiro sanitizados</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Pisos esfregados e polidos</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Até 2 quartos</li>
           </ul>
-        <a href="book.html" class="cc-price-cta cc-price-cta-secondary">Get started</a>
+        <a href="book.html" class="cc-price-cta cc-price-cta-secondary">Começar</a>
       </div>
       <div class="cc-price-card cc-popular" data-cc-anim>
-          <div class="cc-popular-badge">Most Popular</div>
-          <h3>Deep Clean</h3>
-          <div class="cc-price">$149<span>/visit</span></div>
-          <div class="cc-price-desc">Our most comprehensive package</div>
+          <div class="cc-popular-badge">Mais Popular</div>
+          <h3>Limpeza Profunda</h3>
+          <div class="cc-price">R$149<span>/visita</span></div>
+          <div class="cc-price-desc">Nosso pacote mais completo</div>
           <ul class="cc-price-features">
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Standard</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Inside cabinets &amp; appliances</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Window sills &amp; baseboards</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 4 bedrooms</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Eco-friendly products</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tudo do Padrão</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Interior de armários e eletrodomésticos</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Peitoris e rodapés</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Até 4 quartos</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Produtos ecológicos</li>
           </ul>
-          <a href="book.html" class="cc-price-cta cc-price-cta-primary">Get started</a>
+          <a href="book.html" class="cc-price-cta cc-price-cta-primary">Começar</a>
         </div>
         <div class="cc-price-card" data-cc-anim>
-          <h3>Move In/Out</h3>
-          <div class="cc-price">$249<span>/visit</span></div>
-          <div class="cc-price-desc">For new beginnings or fresh starts</div>
+          <h3>Entrada/Saída</h3>
+          <div class="cc-price">R$249<span>/visita</span></div>
+          <div class="cc-price-desc">Para novos começos</div>
           <ul class="cc-price-features">
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Deep Clean</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Wall spot cleaning</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Garage &amp; storage areas</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited rooms</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority scheduling</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tudo da Limpeza Profunda</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Limpeza de manchas nas paredes</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Garagem e áreas de armazenamento</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Quartos ilimitados</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Agendamento prioritário</li>
           </ul>
-          <a href="book.html" class="cc-price-cta cc-price-cta-secondary">Get started</a>
+          <a href="book.html" class="cc-price-cta cc-price-cta-secondary">Começar</a>
         </div>
       </div>
     </div>
@@ -859,39 +927,39 @@
   <section class="cc-testimonials" id="reviews">
     <div class="cc-container">
       <div style="text-align:center;margin-bottom:64px;" class="cc-section-head">
-        <div class="cc-section-label">Testimonials</div>
-        <h2 class="cc-section-title">Loved by homeowners everywhere</h2>
-        <p class="cc-section-desc" style="margin-left:auto;margin-right:auto;">Real stories from real customers who transformed their homes with Cleaners Club.</p>
+        <div class="cc-section-label">Depoimentos</div>
+        <h2 class="cc-section-title">Amado por proprietários em todo lugar</h2>
+        <p class="cc-section-desc" style="margin-left:auto;margin-right:auto;">Histórias reais de clientes que transformaram seus lares com o Cleaners Club.</p>
       </div>
       <div class="cc-test-grid">
         <div class="cc-test-card" data-cc-anim>
           <div class="cc-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;I&rsquo;ve tried many cleaning services, but Cleaners Club is on another level. Consistent, reliable, and my home smells amazing every time.&rdquo;</blockquote>
+          <blockquote>"Já testei muitos serviços de limpeza, mas o Cleaners Club é outro nível. Consistente, confiável, e meu lar cheira incrível toda vez."</blockquote>
           <div class="cc-test-author">
             <div class="cc-test-avatar" style="background:linear-gradient(135deg,#635bff,#a259ff)">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&q=80" alt="James">
             </div>
-            <div><h5>James Cooper</h5><span>Weekly subscriber</span></div>
+            <div><h5>James Cooper</h5><span>Assinante semanal</span></div>
           </div>
         </div>
         <div class="cc-test-card" data-cc-anim>
           <div class="cc-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;Booked a move-out clean and got my entire deposit back. The team was meticulous and so professional. Can&rsquo;t recommend enough!&rdquo;</blockquote>
+          <blockquote>"Agendei uma limpeza de saída e recuperei todo o meu depósito. A equipe foi meticulosa e muito profissional. Recomendo demais!"</blockquote>
           <div class="cc-test-author">
             <div class="cc-test-avatar" style="background:linear-gradient(135deg,#f9a825,#f4724e)">
               <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&q=80" alt="Amanda">
             </div>
-            <div><h5>Amanda Chen</h5><span>Move-out clean</span></div>
+            <div><h5>Amanda Chen</h5><span>Limpeza de saída</span></div>
           </div>
         </div>
         <div class="cc-test-card" data-cc-anim>
           <div class="cc-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;As a busy parent, this service is a lifesaver. The eco-friendly products give me peace of mind with kids and pets around.&rdquo;</blockquote>
+          <blockquote>"Como mãe ocupada, esse serviço é um salva-vidas. Os produtos ecológicos me dão tranquilidade com crianças e pets por perto."</blockquote>
           <div class="cc-test-author">
             <div class="cc-test-avatar" style="background:linear-gradient(135deg,#1ea672,#34d399)">
               <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&q=80" alt="Rachel">
             </div>
-            <div><h5>Rachel Torres</h5><span>Bi-weekly plan</span></div>
+            <div><h5>Rachel Torres</h5><span>Plano quinzenal</span></div>
           </div>
         </div>
       </div>
@@ -901,11 +969,11 @@
   <!-- ─── CTA ─── -->
   <section class="cc-cta">
     <div class="cc-cta-content">
-      <h2>Ready for a cleaner home?</h2>
-      <p>Start with your first clean today and discover why thousands of homeowners chose Cleaners Club.</p>
+      <h2>Pronto para um lar mais limpo?</h2>
+      <p>Comece com sua primeira limpeza hoje e descubra por que milhares de proprietários escolheram o Cleaners Club.</p>
       <div class="cc-cta-form">
-        <input class="cc-hero-input" type="email" placeholder="Email address">
-        <a href="book.html" class="cc-hero-btn">Book now <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <input class="cc-hero-input" type="email" placeholder="Endereço de e-mail">
+        <a href="book.html" class="cc-hero-btn">Agendar agora <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
   </section>
@@ -918,28 +986,28 @@
           <svg viewBox="0 0 36 36" fill="none" width="36" height="36"><circle cx="18" cy="18" r="16.5" stroke="currentColor" stroke-width="2"/><rect x="16" y="4" width="4" height="18" rx="2" fill="currentColor" opacity=".85"/><ellipse cx="18" cy="26" rx="9" ry="4" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 25c1-2 3-3 6-3s5 1 6 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="8" r="1.5" fill="currentColor" opacity=".5"/><circle cx="13" cy="10" r="1" fill="currentColor" opacity=".4"/></svg>
           Cleaners Club
         </a>
-        <p>Professional home cleaning services trusted by thousands. Making homes sparkle since 2024.</p>
+        <p>Serviços profissionais de limpeza residencial confiados por milhares. Tornando lares brilhantes desde 2024.</p>
       </div>
       <div class="cc-footer-col">
-        <h4>Services</h4>
-        <a href="#">Standard Clean</a><a href="#">Deep Clean</a><a href="#">Move In/Out</a><a href="#">Office Cleaning</a><a href="#">Carpet Cleaning</a>
+        <h4>Serviços</h4>
+        <a href="#">Limpeza Padrão</a><a href="#">Limpeza Profunda</a><a href="#">Entrada/Saída</a><a href="#">Limpeza Comercial</a><a href="#">Limpeza de Carpetes</a>
       </div>
       <div class="cc-footer-col">
-        <h4>Company</h4>
-        <a href="#">About Us</a><a href="#">Careers</a><a href="#">Blog</a><a href="#">Press</a>
+        <h4>Empresa</h4>
+        <a href="#">Sobre Nós</a><a href="#">Carreiras</a><a href="#">Blog</a><a href="#">Imprensa</a>
       </div>
       <div class="cc-footer-col">
-        <h4>Resources</h4>
-        <a href="#">FAQ</a><a href="#">Cleaning Tips</a><a href="#">Service Areas</a><a href="#">Partners</a>
+        <h4>Recursos</h4>
+        <a href="#">Perguntas Frequentes</a><a href="#">Dicas de Limpeza</a><a href="#">Áreas de Atendimento</a><a href="#">Parceiros</a>
       </div>
       <div class="cc-footer-col">
         <h4>Legal</h4>
-        <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a>
+        <a href="#">Política de Privacidade</a><a href="#">Termos de Serviço</a><a href="#">Política de Cookies</a>
       </div>
     </div>
     <div class="cc-footer-bottom">
-      <span>&copy; 2026 Cleaners Club. All rights reserved.</span>
-      <span>Made with care, just like our cleans.</span>
+      <span>© 2026 Cleaners Club. Todos os direitos reservados.</span>
+      <span>Feito com cuidado, assim como nossas limpezas.</span>
     </div>
   </footer>
 
@@ -998,6 +1066,25 @@
       compare.addEventListener('touchstart', function(e) { dragging = true; updateSlider(e.touches[0].clientX); }, { passive: true });
       window.addEventListener('touchmove', function(e) { if (dragging) updateSlider(e.touches[0].clientX); }, { passive: true });
       window.addEventListener('touchend', function() { dragging = false; });
+
+      /* ── Hamburger / Mobile menu ── */
+      var hamburger = document.getElementById('ccHamburger');
+      var mobileMenu = document.getElementById('ccMobileMenu');
+      function closeMobileMenu() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+      hamburger.addEventListener('click', function() {
+        var open = mobileMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        document.body.style.overflow = open ? 'hidden' : '';
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      mobileMenu.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', closeMobileMenu);
+      });
 
       /* ── Hero parallax on mouse ── */
       var heroRight = document.querySelector('.cc-hero-right');
