@@ -399,6 +399,7 @@
     .cc-price-cta {
       width:100%; padding:14px; border:none; border-radius:14px;
       font-size:15px; font-weight:700; font-family:inherit; cursor:pointer; transition:all .25s;
+      display:flex; align-items:center; justify-content:center; text-align:center; text-decoration:none;
     }
     .cc-price-cta-primary { background:#635bff; color:#fff; box-shadow:0 4px 14px rgba(99,91,255,.35); }
     .cc-price-cta-primary:hover { background:#4f46e5; transform:translateY(-2px); }
@@ -494,22 +495,77 @@
       .cc-hero-right { display:none; }
       .cc-features-grid,.cc-how-steps,.cc-pricing-grid,.cc-test-grid { grid-template-columns:1fr; max-width:500px; }
       .cc-gallery-grid { grid-template-columns:1fr 1fr; }
-      .cc-gallery-item:nth-child(1) { grid-row:auto; }
+      .cc-gallery-item:nth-child(1) { grid-row:auto; aspect-ratio:4/3; }
       .cc-footer-grid { grid-template-columns:1fr 1fr; }
+      .cc-features,.cc-how,.cc-pricing,.cc-testimonials,.cc-gallery,.cc-compare { padding-top:80px; padding-bottom:80px; }
     }
     @media(max-width:768px) {
-      .cc-nav { padding:14px 20px; }
+      .cc-nav { padding:12px 16px; }
       .cc-nav-links { display:none; }
-      .cc-hero { padding:0 20px 60px; }
-      .cc-announce-pill { margin-left:20px; }
-      .cc-hero-form { flex-direction:column; }
-      .cc-features,.cc-how,.cc-pricing,.cc-testimonials,.cc-cta,.cc-footer,.cc-gallery,.cc-compare { padding-left:20px; padding-right:20px; }
-      .cc-cta-form { flex-direction:column; }
+      .cc-logo { font-size:17px; }
+      .cc-logo svg { width:32px; height:32px; }
+      .cc-nav-quote { padding:10px 16px; font-size:13px; min-height:44px; display:inline-flex; align-items:center; }
+      .cc-hero { padding:0 16px 48px; min-height:auto; }
+      .cc-announce { padding-top:70px; }
+      .cc-announce-pill { margin-left:16px; margin-right:16px; font-size:12px; padding:10px 14px; flex-wrap:wrap; }
+      .cc-announce-badge { font-size:10px; padding:2px 8px; }
+      .cc-hero-inner { padding-top:24px; gap:24px; }
+      .cc-hero-title { font-size:clamp(32px,8vw,42px); margin-bottom:16px; }
+      .cc-hero-desc { font-size:15px; margin-bottom:24px; }
+      .cc-hero-form { flex-direction:column; max-width:100%; gap:12px; }
+      .cc-hero-input { padding:14px 18px; font-size:16px; min-height:48px; }
+      .cc-hero-btn { justify-content:center; padding:14px 24px; min-height:48px; font-size:15px; }
+      .cc-features,.cc-how,.cc-pricing,.cc-testimonials,.cc-cta,.cc-footer,.cc-gallery,.cc-compare { padding-left:16px; padding-right:16px; }
+      .cc-features,.cc-how,.cc-pricing,.cc-testimonials,.cc-gallery,.cc-compare { padding-top:56px; padding-bottom:56px; }
+      .cc-cta { padding:56px 16px; }
+      .cc-cta-form { flex-direction:column; max-width:100%; gap:12px; }
+      .cc-cta-form .cc-hero-input { width:100%; }
+      .cc-cta-form .cc-hero-btn { width:100%; justify-content:center; }
+      .cc-section-title { font-size:clamp(24px,6vw,32px); margin-bottom:12px; }
+      .cc-section-desc { font-size:15px; margin-bottom:40px; }
+      .cc-features-grid,.cc-how-steps,.cc-pricing-grid,.cc-test-grid { max-width:100%; }
       .cc-gallery-grid { grid-template-columns:1fr; }
-      .cc-footer-grid { grid-template-columns:1fr; }
-      .cc-footer-bottom { flex-direction:column; gap:12px; }
+      .cc-gallery-item:nth-child(1) { aspect-ratio:4/3; }
+      .cc-footer { padding:48px 16px 32px; }
+      .cc-footer-grid { grid-template-columns:1fr; gap:32px; margin-bottom:40px; }
+      .cc-footer-bottom { flex-direction:column; gap:12px; text-align:center; padding-top:24px; font-size:12px; }
+      .cc-feature-card { padding:24px 20px; }
+      .cc-feature-card h3 { font-size:16px; }
+      .cc-feature-card p { font-size:14px; }
+      .cc-step-num { width:56px; height:56px; font-size:20px; margin-bottom:16px; }
+      .cc-step h3 { font-size:18px; }
+      .cc-step p { font-size:14px; }
+      .cc-price-card { padding:28px 20px; }
+      .cc-price-card .cc-price { font-size:40px; }
+      .cc-price-cta { min-height:48px; padding:14px; }
+      .cc-test-card { padding:24px 20px; }
+      .cc-test-card blockquote { font-size:14px; }
+      .cc-cta h2 { font-size:clamp(26px,6vw,34px); }
+      .cc-cta p { font-size:15px; margin-bottom:32px; }
+      .cc-container { padding-left:0; padding-right:0; }
+      .cc-section-head { margin-bottom:40px !important; }
+      .cc-compare-wrapper { margin-left:0; margin-right:0; }
     }
-  </style>
+    @media(max-width:480px) {
+      .cc-nav { padding:10px 12px; }
+      .cc-logo { font-size:15px; gap:8px; }
+      .cc-logo svg { width:28px; height:28px; }
+      .cc-announce-pill { margin-left:12px; margin-right:12px; font-size:11px; }
+      .cc-hero-title { font-size:28px; }
+      .cc-hero-desc { font-size:14px; }
+      .cc-features,.cc-how,.cc-pricing,.cc-testimonials,.cc-gallery,.cc-compare { padding-top:40px; padding-bottom:40px; }
+      .cc-section-title { font-size:22px; }
+      .cc-section-desc { margin-bottom:32px; font-size:14px; }
+      .cc-compare-wrapper { border-radius:12px; min-height:220px; aspect-ratio:4/3; }
+      .cc-compare-label { font-size:10px; padding:6px 12px; top:12px; }
+      .cc-compare-label-before { left:12px; }
+      .cc-compare-label-after { right:12px; }
+      .cc-compare-handle::before { width:44px; height:44px; }
+      .cc-how-steps { gap:32px; }
+      .cc-pricing-grid { gap:20px; }
+      .cc-footer-brand p { font-size:13px; }
+      .cc-footer-col a { margin-bottom:10px; padding:4px 0; min-height:44px; display:flex; align-items:center; }
+    }
 </head>
 <body>
 
@@ -639,7 +695,7 @@
   <!-- ─── BEFORE / AFTER ─── -->
   <section class="cc-compare" id="compare">
     <div class="cc-container">
-      <div style="text-align:center; margin-bottom:64px;">
+      <div style="text-align:center; margin-bottom:64px;" class="cc-section-head">
         <div class="cc-section-label">See The Difference</div>
         <h2 class="cc-section-title">Drag to reveal the transformation</h2>
         <p class="cc-section-desc" style="margin-left:auto;margin-right:auto;">
@@ -750,7 +806,7 @@
   <!-- ─── PRICING ─── -->
   <section class="cc-pricing" id="pricing">
     <div class="cc-container">
-      <div style="text-align:center;margin-bottom:64px;">
+      <div style="text-align:center;margin-bottom:64px;" class="cc-section-head">
         <div class="cc-section-label">Pricing</div>
         <h2 class="cc-section-title">Simple, transparent pricing</h2>
         <p class="cc-section-desc" style="margin-left:auto;margin-right:auto;">No hidden fees, no surprise charges. Pick the plan that fits your home and budget.</p>
@@ -802,7 +858,7 @@
   <!-- ─── TESTIMONIALS ─── -->
   <section class="cc-testimonials" id="reviews">
     <div class="cc-container">
-      <div style="text-align:center;margin-bottom:64px;">
+      <div style="text-align:center;margin-bottom:64px;" class="cc-section-head">
         <div class="cc-section-label">Testimonials</div>
         <h2 class="cc-section-title">Loved by homeowners everywhere</h2>
         <p class="cc-section-desc" style="margin-left:auto;margin-right:auto;">Real stories from real customers who transformed their homes with Cleaners Club.</p>
