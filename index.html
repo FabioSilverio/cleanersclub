@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cleaners Club — Professional Home Cleaning Services</title>
+  <meta name="description" content="Join thousands of homeowners who trust Cleaners Club for professional home cleaning. Vetted cleaners, flexible scheduling, spotless results.">
+  <meta property="og:title" content="Cleaners Club — Professional Home Cleaning Services">
+  <meta property="og:description" content="Book vetted cleaning professionals. Flexible scheduling, eco-friendly products, satisfaction guaranteed.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #0a2540;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width:100%; }
+    a { text-decoration:none; color:inherit; }
+
+    /* ── NAV ── */
+    .cc-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 16px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .35s, box-shadow .35s;
+    }
+    .cc-nav.scrolled {
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    }
+    .cc-nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; font-size: 22px;
+      color: #fff; display: flex; align-items: center; gap: 8px;
+      transition: color .35s;
+    }
+    .cc-nav.scrolled .cc-nav-logo { color: #0a2540; }
+    .cc-nav-logo svg { width: 28px; height: 28px; }
+    .cc-nav-links { display:flex; gap:32px; align-items:center; }
+    .cc-nav-links a {
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,.85);
+      transition: color .2s; position: relative;
+    }
+    .cc-nav.scrolled .cc-nav-links a { color: #425466; }
+    .cc-nav-links a:hover { color: #fff; }
+    .cc-nav.scrolled .cc-nav-links a:hover { color: #0a2540; }
+    .cc-nav-links a::after {
+      content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px;
+      background:#fff; transition: width .25s;
+    }
+    .cc-nav.scrolled .cc-nav-links a::after { background:#635bff; }
+    .cc-nav-links a:hover::after { width:100%; }
+    .cc-nav-cta { display:flex; align-items:center; gap:20px; }
+    .cc-nav-signin {
+      font-size:14px; font-weight:500; color:rgba(255,255,255,.9);
+      display:flex; align-items:center; gap:4px; transition: color .2s;
+    }
+    .cc-nav.scrolled .cc-nav-signin { color:#0a2540; }
+    .cc-nav-contact {
+      font-size:14px; font-weight:600; color:#fff;
+      border:1.5px solid rgba(255,255,255,.5); border-radius:20px;
+      padding:6px 16px; transition: all .25s;
+    }
+    .cc-nav.scrolled .cc-nav-contact { border-color:#0a2540; color:#0a2540; }
+    .cc-nav-contact:hover { background:rgba(255,255,255,.15); }
+    .cc-nav.scrolled .cc-nav-contact:hover { background:#0a2540; color:#fff; }
+
+    /* ── MOBILE MENU ── */
+    .cc-menu-toggle {
+      display: none; background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .cc-menu-toggle span {
+      display: block; width: 22px; height: 2px; background: #fff;
+      margin: 5px 0; transition: all .3s; border-radius: 2px;
+    }
+    .cc-nav.scrolled .cc-menu-toggle span { background: #0a2540; }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .cc-announce { position: relative; z-index: 2; padding-top: 80px; }
+    .cc-announce-inner {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.18); backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 8px 18px; border-radius: 20px;
+      font-size: 13px; font-weight: 500; color: #fff;
+      margin-left: 48px;
+      animation: ccFadeDown .8s ease-out;
+      cursor: pointer; transition: background .2s;
+    }
+    .cc-announce-inner:hover { background: rgba(255,255,255,.28); }
+    .cc-announce-badge {
+      background: rgba(255,255,255,.25); padding: 2px 10px;
+      border-radius: 10px; font-size: 12px; font-weight: 600;
+    }
+
+    /* ── HERO ── */
+    .cc-hero {
+      position: relative;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f9a825 0%, #f4724e 22%, #e8527a 44%, #c94080 58%, #9b45b5 78%, #6e5ce6 100%);
+      padding: 0 48px 80px;
+      display: flex; flex-direction: column;
+    }
+    .cc-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 60%, rgba(251,176,52,.35) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 30%, rgba(110,92,230,.3) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .cc-hero-content {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      flex: 1; padding-top: 40px;
+      max-width: 1280px; margin: 0 auto; width: 100%;
+    }
+    .cc-hero-left { animation: ccFadeUp 1s ease-out; }
+    .cc-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; font-size: clamp(48px, 5.5vw, 80px);
+      line-height: 1.05; color: #0a2540;
+      margin-bottom: 28px; letter-spacing: -1px;
+    }
+    .cc-hero-title .cc-highlight { display: block; }
+    .cc-hero-desc {
+      font-size: 18px; color: rgba(10,37,64,.7);
+      max-width: 480px; margin-bottom: 36px; line-height: 1.7;
+    }
+    .cc-hero-form { display: flex; gap: 12px; max-width: 440px; }
+    .cc-hero-input {
+      flex:1; padding: 14px 20px;
+      border: none; border-radius: 25px;
+      font-size: 15px; font-family: inherit;
+      background: #fff; color: #0a2540;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      outline: none; transition: box-shadow .25s;
+    }
+    .cc-hero-input::placeholder { color: #8492a6; }
+    .cc-hero-input:focus { box-shadow: 0 4px 24px rgba(99,91,255,.25); }
+    .cc-hero-btn {
+      padding: 14px 28px; border: none; border-radius: 25px;
+      background: #635bff; color: #fff;
+      font-size: 15px; font-weight: 600; font-family: inherit;
+      cursor: pointer; display: flex; align-items: center; gap: 6px;
+      white-space: nowrap; transition: all .25s;
+      box-shadow: 0 4px 14px rgba(99,91,255,.35);
+    }
+    .cc-hero-btn:hover {
+      background: #4b45c7;
+      box-shadow: 0 6px 20px rgba(99,91,255,.45);
+      transform: translateY(-1px);
+    }
+    .cc-hero-btn svg { width:16px; height:16px; transition: transform .25s; }
+    .cc-hero-btn:hover svg { transform: translateX(3px); }
+
+    /* ── HERO RIGHT: FLOATING CARDS ── */
+    .cc-hero-right {
+      position: relative; height: 540px;
+      animation: ccFadeLeft 1s ease-out .3s both;
+    }
+    .cc-float-card {
+      position: absolute; background: #fff;
+      border-radius: 16px; padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.12);
+      transition: transform .4s ease;
+    }
+    .cc-float-card:hover { transform: translateY(-6px) !important; }
+
+    .cc-card-booking {
+      top: 0; left: 10%; width: 280px;
+      animation: ccBob 6s ease-in-out infinite;
+    }
+    .cc-card-booking-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, #635bff, #a259ff);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .cc-card-booking-icon svg { width: 28px; height: 28px; }
+    .cc-card-booking h4 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .cc-card-booking p { font-size: 14px; color: #8492a6; margin-bottom: 16px; }
+    .cc-card-booking-btn {
+      width: 100%; padding: 12px; border: none; border-radius: 10px;
+      background: #0a2540; color: #fff; font-size: 14px; font-weight: 600;
+      font-family: inherit; cursor: pointer; transition: background .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .cc-card-booking-btn:hover { background: #1a3a5c; }
+    .cc-card-booking-sep { text-align:center; font-size:13px; color:#8492a6; margin:10px 0; }
+    .cc-card-booking-fields { display:flex; flex-direction:column; gap:8px; }
+    .cc-card-booking-field {
+      padding: 10px 14px; border:1px solid #e3e8ee; border-radius:8px;
+      font-size:13px; color:#0a2540; display:flex; justify-content:space-between;
+    }
+    .cc-card-booking-field span { color:#8492a6; }
+
+    .cc-card-stats {
+      top: 20px; right: 0; width: 260px;
+      animation: ccBob 6s ease-in-out 1s infinite;
+    }
+    .cc-card-stats-header { display:flex; justify-content:space-between; margin-bottom:4px; }
+    .cc-card-stats-header h4 { font-size:14px; font-weight:600; color:#0a2540; }
+    .cc-card-stats-header span { font-size:12px; color:#8492a6; }
+    .cc-stats-amount { font-size:26px; font-weight:700; color:#0a2540; margin-bottom:2px; }
+    .cc-stats-sub { font-size:13px; color:#8492a6; margin-bottom:12px; }
+    .cc-stats-badge {
+      display:inline-block; background:#e6f9ed; color:#1ea672;
+      font-size:12px; font-weight:600; padding:2px 8px; border-radius:8px;
+      margin-left:8px;
+    }
+    .cc-stats-graph { width:100%; height:80px; position:relative; }
+    .cc-stats-graph svg { width:100%; height:100%; }
+
+    .cc-card-review {
+      bottom: 20px; left: 5%; width: 300px;
+      animation: ccBob 6s ease-in-out 2s infinite;
+    }
+    .cc-card-review-top { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+    .cc-card-review-avatar {
+      width:42px; height:42px; border-radius:50%;
+      background: linear-gradient(135deg, #f9a825, #e8527a);
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-weight:700; font-size:16px;
+    }
+    .cc-card-review-info h5 { font-size:14px; font-weight:600; }
+    .cc-card-review-info span { font-size:12px; color:#8492a6; }
+    .cc-card-review-stars { color:#f9a825; font-size:16px; margin-bottom:8px; letter-spacing:2px; }
+    .cc-card-review p { font-size:13px; color:#425466; line-height:1.6; }
+
+    /* ── SECTION UTILITIES ── */
+    .cc-container { max-width: 1280px; margin: 0 auto; }
+    .cc-section-label {
+      font-size: 13px; font-weight: 600; color: #635bff;
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+    }
+    .cc-section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800; font-size: clamp(32px, 3.5vw, 48px);
+      color: #0a2540; margin-bottom: 16px; line-height: 1.15;
+    }
+    .cc-section-desc {
+      font-size: 17px; color: #425466; max-width: 560px; margin-bottom: 64px; line-height: 1.7;
+    }
+
+    /* ── FEATURES ── */
+    .cc-features { background: #fff; padding: 120px 48px; }
+    .cc-features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+    }
+    .cc-feature-card {
+      padding: 36px; border-radius: 16px;
+      background: #f6f9fc; border: 1px solid #e3e8ee;
+      transition: all .35s ease;
+      opacity: 0; transform: translateY(30px);
+    }
+    .cc-feature-card.cc-visible { opacity: 1; transform: translateY(0); }
+    .cc-feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.08);
+      border-color: #d0d5dd;
+    }
+    .cc-feature-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .cc-feature-icon svg { width: 26px; height: 26px; }
+    .cc-feature-card h3 { font-size: 18px; font-weight: 700; color: #0a2540; margin-bottom: 10px; }
+    .cc-feature-card p { font-size: 15px; color: #425466; line-height: 1.7; }
+
+    /* ── HOW IT WORKS ── */
+    .cc-how {
+      background: #0a2540; padding: 120px 48px; position: relative; overflow: hidden;
+    }
+    .cc-how::before {
+      content:''; position:absolute; top:-200px; right:-200px;
+      width:600px; height:600px; border-radius:50%;
+      background: radial-gradient(circle, rgba(99,91,255,.15), transparent 70%);
+    }
+    .cc-how .cc-section-label { color: #7a73ff; }
+    .cc-how .cc-section-title { color: #fff; }
+    .cc-how .cc-section-desc { color: rgba(255,255,255,.6); }
+    .cc-how-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 48px; position: relative; z-index: 2;
+    }
+    .cc-step { text-align: center; opacity: 0; transform: translateY(30px); }
+    .cc-step.cc-visible { opacity:1; transform:translateY(0); }
+    .cc-step-num {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, #635bff, #a259ff);
+      color: #fff; font-size: 24px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 30px rgba(99,91,255,.4);
+    }
+    .cc-step h3 { font-size:20px; font-weight:700; color:#fff; margin-bottom:10px; }
+    .cc-step p { font-size:15px; color:rgba(255,255,255,.55); line-height:1.7; max-width:300px; margin:0 auto; }
+
+    /* ── PRICING ── */
+    .cc-pricing { background: #f6f9fc; padding: 120px 48px; }
+    .cc-pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px; max-width: 1000px; margin: 0 auto;
+    }
+    .cc-price-card {
+      background: #fff; border-radius: 16px; padding: 40px 32px;
+      border: 1px solid #e3e8ee; text-align: center;
+      transition: all .35s; position: relative;
+      opacity:0; transform:translateY(30px);
+    }
+    .cc-price-card.cc-visible { opacity:1; transform:translateY(0); }
+    .cc-price-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.1);
+    }
+    .cc-price-card.cc-popular {
+      border-color: #635bff;
+      box-shadow: 0 8px 32px rgba(99,91,255,.15);
+    }
+    .cc-popular-badge {
+      position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+      background: linear-gradient(135deg, #635bff, #a259ff);
+      color:#fff; font-size:12px; font-weight:600;
+      padding:4px 16px; border-radius:12px;
+    }
+    .cc-price-card h3 { font-size:20px; font-weight:700; margin-bottom:8px; }
+    .cc-price-card .cc-price {
+      font-family:'Playfair Display',serif; font-size:48px; font-weight:900; color:#0a2540;
+      margin-bottom:4px;
+    }
+    .cc-price-card .cc-price span { font-size:18px; font-weight:500; color:#8492a6; }
+    .cc-price-card .cc-price-desc { font-size:14px; color:#8492a6; margin-bottom:28px; }
+    .cc-price-features { list-style:none; text-align:left; margin-bottom:32px; }
+    .cc-price-features li {
+      font-size:14px; color:#425466; padding:8px 0;
+      border-bottom:1px solid #f0f3f7;
+      display:flex; align-items:center; gap:10px;
+    }
+    .cc-price-features li svg { width:18px; height:18px; color:#1ea672; flex-shrink:0; }
+    .cc-price-cta {
+      width:100%; padding:14px; border:none; border-radius:12px;
+      font-size:15px; font-weight:600; font-family:inherit;
+      cursor:pointer; transition: all .25s;
+    }
+    .cc-price-cta-primary {
+      background:#635bff; color:#fff;
+      box-shadow: 0 4px 14px rgba(99,91,255,.35);
+    }
+    .cc-price-cta-primary:hover { background:#4b45c7; transform:translateY(-2px); }
+    .cc-price-cta-secondary { background:#f6f9fc; color:#0a2540; border:1px solid #e3e8ee; }
+    .cc-price-cta-secondary:hover { background:#edf1f5; }
+
+    /* ── TESTIMONIALS ── */
+    .cc-testimonials { background: #fff; padding: 120px 48px; }
+    .cc-test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .cc-test-card {
+      padding: 36px; border-radius: 16px;
+      background: #f6f9fc; border: 1px solid #e3e8ee;
+      opacity:0; transform:translateY(30px); transition: all .35s;
+    }
+    .cc-test-card.cc-visible { opacity:1; transform:translateY(0); }
+    .cc-test-card:hover { transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,0,0,.06); }
+    .cc-test-stars { color:#f9a825; font-size:18px; margin-bottom:16px; letter-spacing:2px; }
+    .cc-test-card blockquote {
+      font-size:15px; color:#425466; line-height:1.7; margin-bottom:20px; font-style:italic;
+    }
+    .cc-test-author { display:flex; align-items:center; gap:12px; }
+    .cc-test-avatar {
+      width:40px; height:40px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-weight:700; font-size:15px;
+    }
+    .cc-test-author h5 { font-size:14px; font-weight:600; color:#0a2540; }
+    .cc-test-author span { font-size:12px; color:#8492a6; }
+
+    /* ── CTA ── */
+    .cc-cta {
+      background: linear-gradient(135deg, #f9a825 0%, #f4724e 22%, #e8527a 44%, #c94080 58%, #9b45b5 78%, #6e5ce6 100%);
+      padding: 120px 48px; text-align: center; position: relative; overflow: hidden;
+    }
+    .cc-cta::before {
+      content:''; position:absolute; inset:0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(255,255,255,.1), transparent 70%);
+    }
+    .cc-cta-content { position:relative; z-index:2; }
+    .cc-cta h2 {
+      font-family:'Playfair Display',serif; font-weight:900;
+      font-size:clamp(36px,4vw,56px); color:#0a2540; margin-bottom:16px;
+    }
+    .cc-cta p {
+      font-size:18px; color:rgba(10,37,64,.65); margin-bottom:40px;
+      max-width:500px; margin-left:auto; margin-right:auto;
+    }
+    .cc-cta-form { display:flex; gap:12px; justify-content:center; max-width:440px; margin:0 auto; }
+
+    /* ── FOOTER ── */
+    .cc-footer {
+      background: #0a2540; padding: 80px 48px 40px; color: rgba(255,255,255,.6);
+    }
+    .cc-footer-grid {
+      display: grid; grid-template-columns: 2fr repeat(4, 1fr);
+      gap: 48px; margin-bottom: 60px; max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .cc-footer-brand .cc-nav-logo { color:#fff; margin-bottom:16px; }
+    .cc-footer-brand p { font-size:14px; line-height:1.7; max-width:280px; }
+    .cc-footer-col h4 {
+      font-size:13px; font-weight:600; color:#fff;
+      text-transform:uppercase; letter-spacing:1.5px; margin-bottom:20px;
+    }
+    .cc-footer-col a {
+      display:block; font-size:14px; color:rgba(255,255,255,.5);
+      margin-bottom:12px; transition: color .2s;
+    }
+    .cc-footer-col a:hover { color:#fff; }
+    .cc-footer-bottom {
+      border-top:1px solid rgba(255,255,255,.1); padding-top:28px;
+      display:flex; justify-content:space-between; font-size:13px;
+      max-width: 1280px; margin: 0 auto;
+    }
+
+    /* ── FLOATING ELEMENTS ── */
+    .cc-float-elem { position: absolute; pointer-events: none; z-index: 1; }
+    .cc-bubble-1 {
+      width:180px; height:180px; border-radius:50%;
+      background: radial-gradient(circle, rgba(255,255,255,.12), transparent 70%);
+      top:15%; right:8%; animation: ccFloat 8s ease-in-out infinite;
+    }
+    .cc-bubble-2 {
+      width:120px; height:120px; border-radius:50%;
+      background: radial-gradient(circle, rgba(255,255,255,.08), transparent 70%);
+      bottom:20%; left:5%; animation: ccFloat 10s ease-in-out 2s infinite;
+    }
+    .cc-sparkle {
+      width:8px; height:8px; border-radius:50%; background:#fff;
+      opacity:.4; animation: ccTwinkle 3s ease-in-out infinite;
+    }
+    .cc-sparkle-1 { top:25%; left:15%; animation-delay:0s; }
+    .cc-sparkle-2 { top:40%; right:25%; animation-delay:1s; }
+    .cc-sparkle-3 { bottom:30%; left:30%; animation-delay:2s; }
+    .cc-sparkle-4 { top:60%; left:55%; animation-delay:.5s; }
+
+    /* ── KEYFRAMES ── */
+    @keyframes ccFadeUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes ccFadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes ccFadeLeft { from { opacity:0; transform:translateX(60px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes ccBob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+    @keyframes ccFloat { 0%,100% { transform:translate(0,0); } 50% { transform:translate(15px,-20px); } }
+    @keyframes ccTwinkle { 0%,100% { opacity:.2; transform:scale(.8); } 50% { opacity:.7; transform:scale(1.3); } }
+    @keyframes ccDrawLine { from { stroke-dashoffset: 200; } to { stroke-dashoffset: 0; } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:1024px) {
+      .cc-hero-content { grid-template-columns:1fr; }
+      .cc-hero-right { display:none; }
+      .cc-features-grid, .cc-how-steps, .cc-pricing-grid, .cc-test-grid {
+        grid-template-columns:1fr; max-width:500px;
+      }
+      .cc-footer-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:768px) {
+      .cc-nav { padding:14px 20px; }
+      .cc-nav-links { display:none; }
+      .cc-menu-toggle { display: block; }
+      .cc-hero { padding:0 20px 60px; }
+      .cc-announce-inner { margin-left:20px; }
+      .cc-hero-form { flex-direction:column; }
+      .cc-features, .cc-how, .cc-pricing, .cc-testimonials, .cc-cta, .cc-footer {
+        padding-left:20px; padding-right:20px;
+      }
+      .cc-cta-form { flex-direction:column; }
+      .cc-footer-grid { grid-template-columns:1fr; }
+      .cc-footer-bottom { flex-direction:column; gap:12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="cc-nav" id="ccNav">
+    <div class="cc-nav-logo">
+      <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2"/><path d="M9 15.5c1-4 3.5-6 5-6s2.5 1.5 2.5 3-1 3-2.5 3-2-1-2-2.5 1-3 2.5-3 3 1.5 4 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+      Cleaners Club
+    </div>
+    <div class="cc-nav-links">
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+    <div class="cc-nav-cta">
+      <a class="cc-nav-signin" href="#">Sign in <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="cc-nav-contact" href="#">Get a quote <svg width="12" height="12" fill="none" viewBox="0 0 12 12" style="vertical-align:middle;margin-left:2px"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="cc-menu-toggle" id="ccMenuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cc-hero">
+    <div class="cc-announce">
+      <div class="cc-announce-inner">
+        <span class="cc-announce-badge">New 2026</span>
+        Spring cleaning season &mdash; 20% off first booking
+        <svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M5.5 3l4 4-4 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+
+    <div class="cc-float-elem cc-bubble-1"></div>
+    <div class="cc-float-elem cc-bubble-2"></div>
+    <div class="cc-float-elem cc-sparkle cc-sparkle-1"></div>
+    <div class="cc-float-elem cc-sparkle cc-sparkle-2"></div>
+    <div class="cc-float-elem cc-sparkle cc-sparkle-3"></div>
+    <div class="cc-float-elem cc-sparkle cc-sparkle-4"></div>
+
+    <div class="cc-hero-content">
+      <div class="cc-hero-left">
+        <h1 class="cc-hero-title">
+          Professional cleaning
+          <span class="cc-highlight">to elevate your</span>
+          home
+        </h1>
+        <p class="cc-hero-desc">
+          Join thousands of homeowners who trust Cleaners Club to keep their spaces spotless. Book vetted professionals, enjoy flexible scheduling, and come home to perfection.
+        </p>
+        <form class="cc-hero-form" onsubmit="return false;">
+          <input class="cc-hero-input" type="email" placeholder="Email address">
+          <button class="cc-hero-btn" type="submit">
+            Book now
+            <svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="cc-hero-right">
+        <div class="cc-float-card cc-card-booking">
+          <div class="cc-card-booking-icon">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M14 3v4M8 7l2 3M20 7l-2 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/><rect x="5" y="12" width="18" height="12" rx="3" stroke="#fff" stroke-width="2"/><path d="M10 17h8M10 20h5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h4>Deep Clean Package</h4>
+          <p>Starting at $120/session</p>
+          <button class="cc-card-booking-btn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v3M5 3l1.5 2M11 3l-1.5 2M3 7h10v6a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Book Instantly
+          </button>
+          <div class="cc-card-booking-sep">Or customize your clean</div>
+          <div class="cc-card-booking-fields">
+            <div class="cc-card-booking-field">Bedrooms <span>3</span></div>
+            <div class="cc-card-booking-field">Bathrooms <span>2</span></div>
+            <div class="cc-card-booking-field">Date <span>Mar 15</span></div>
+          </div>
+        </div>
+
+        <div class="cc-float-card cc-card-stats">
+          <div class="cc-card-stats-header">
+            <h4>Homes Cleaned</h4>
+            <span>This Month</span>
+          </div>
+          <div class="cc-stats-amount">2,847 <span class="cc-stats-badge">+18.4%</span></div>
+          <div class="cc-stats-sub">vs. 2,404 last month</div>
+          <div class="cc-stats-graph">
+            <svg viewBox="0 0 220 70" fill="none">
+              <defs>
+                <linearGradient id="ccGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#635bff" stop-opacity=".3"/>
+                  <stop offset="100%" stop-color="#635bff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0 60 Q20 55 40 50 T80 35 T120 28 T160 15 T200 10 L220 8 L220 70 L0 70Z" fill="url(#ccGrad)"/>
+              <path d="M0 60 Q20 55 40 50 T80 35 T120 28 T160 15 T200 10 L220 8" stroke="#635bff" stroke-width="2.5" fill="none" stroke-linecap="round"
+                style="stroke-dasharray:350;stroke-dashoffset:350;animation:ccDrawLine 2s ease-out 1s forwards"/>
+              <circle cx="220" cy="8" r="4" fill="#635bff" opacity="0" style="animation:ccTwinkle 2s ease-out 2.8s forwards"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="cc-float-card cc-card-review">
+          <div class="cc-card-review-top">
+            <div class="cc-card-review-avatar">S</div>
+            <div class="cc-card-review-info">
+              <h5>Sarah Mitchell</h5>
+              <span>Verified Customer</span>
+            </div>
+          </div>
+          <div class="cc-card-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&ldquo;Absolutely transformative. My apartment has never looked this good. The team was thorough, polite, and incredibly efficient.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="cc-features" id="services">
+    <div class="cc-container">
+      <div class="cc-section-label">Why Cleaners Club</div>
+      <h2 class="cc-section-title">Everything you need for<br>a spotless home</h2>
+      <p class="cc-section-desc">
+        We handle the scrubbing so you can focus on living. Our services are designed to fit your lifestyle, your schedule, and your standards.
+      </p>
+      <div class="cc-features-grid">
+        <div class="cc-feature-card" data-cc-anim>
+          <div class="cc-feature-icon" style="background:linear-gradient(135deg,#e6f9ed,#c1f0d4)">
+            <svg viewBox="0 0 26 26" fill="none"><path d="M13 3v6M9 6l4-3 4 3" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="11" width="18" height="11" rx="3" stroke="#1ea672" stroke-width="2"/><path d="M10 15.5h6" stroke="#1ea672" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Deep Cleaning</h3>
+          <p>Our signature top-to-bottom deep clean reaches every corner, crevice, and surface your home has been hiding from.</p>
+        </div>
+        <div class="cc-feature-card" data-cc-anim>
+          <div class="cc-feature-icon" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">
+            <svg viewBox="0 0 26 26" fill="none"><path d="M4 20l4-8 4 5 4-9 6 12" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="6" r="3" stroke="#7c3aed" stroke-width="2"/></svg>
+          </div>
+          <h3>Recurring Plans</h3>
+          <p>Set it and forget it. Weekly, bi-weekly, or monthly plans that keep your home consistently immaculate.</p>
+        </div>
+        <div class="cc-feature-card" data-cc-anim>
+          <div class="cc-feature-icon" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2)">
+            <svg viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9" stroke="#f57c00" stroke-width="2"/><path d="M13 8v5l3.5 3.5" stroke="#f57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Same-Day Booking</h3>
+          <p>Need it cleaned today? Our on-demand service connects you with available professionals within hours.</p>
+        </div>
+        <div class="cc-feature-card" data-cc-anim>
+          <div class="cc-feature-icon" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">
+            <svg viewBox="0 0 26 26" fill="none"><path d="M13 3l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z" stroke="#0284c7" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Vetted Professionals</h3>
+          <p>Every cleaner is background-checked, trained, and rated by real customers. Your trust and safety come first.</p>
+        </div>
+        <div class="cc-feature-card" data-cc-anim>
+          <div class="cc-feature-icon" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
+            <svg viewBox="0 0 26 26" fill="none"><path d="M6 13a7 7 0 1 1 14 0" stroke="#e91e63" stroke-width="2" stroke-linecap="round"/><path d="M10 13v6a3 3 0 0 0 6 0v-6" stroke="#e91e63" stroke-width="2" stroke-linecap="round"/><circle cx="13" cy="9" r="2" stroke="#e91e63" stroke-width="2"/></svg>
+          </div>
+          <h3>Eco-Friendly Products</h3>
+          <p>We use non-toxic, biodegradable cleaning products that are safe for your family, pets, and the planet.</p>
+        </div>
+        <div class="cc-feature-card" data-cc-anim>
+          <div class="cc-feature-icon" style="background:linear-gradient(135deg,#e8eaf6,#c5cae9)">
+            <svg viewBox="0 0 26 26" fill="none"><rect x="4" y="4" width="18" height="18" rx="4" stroke="#3949ab" stroke-width="2"/><path d="M9 13l3 3 5-6" stroke="#3949ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Satisfaction Guarantee</h3>
+          <p>Not 100% happy? We&rsquo;ll re-clean for free within 24 hours. Your satisfaction is our only metric.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="cc-how" id="how">
+    <div class="cc-container">
+      <div class="cc-section-label">How It Works</div>
+      <h2 class="cc-section-title">Sparkling clean in 3 simple steps</h2>
+      <p class="cc-section-desc">
+        From booking to a freshly cleaned home, the entire process takes less than a minute to set up.
+      </p>
+      <div class="cc-how-steps">
+        <div class="cc-step" data-cc-anim>
+          <div class="cc-step-num">1</div>
+          <h3>Choose Your Service</h3>
+          <p>Pick from deep clean, standard, move-in/out, or customize your own package to match your needs.</p>
+        </div>
+        <div class="cc-step" data-cc-anim>
+          <div class="cc-step-num">2</div>
+          <h3>Pick a Date &amp; Time</h3>
+          <p>Select a slot that works for you. We offer flexible scheduling including weekends and evenings.</p>
+        </div>
+        <div class="cc-step" data-cc-anim>
+          <div class="cc-step-num">3</div>
+          <h3>Relax &amp; Enjoy</h3>
+          <p>Our vetted professional arrives on time and transforms your space. Come home to perfection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="cc-pricing" id="pricing">
+    <div class="cc-container">
+      <div style="text-align:center; margin-bottom:64px;">
+        <div class="cc-section-label">Pricing</div>
+        <h2 class="cc-section-title">Simple, transparent pricing</h2>
+        <p class="cc-section-desc" style="margin-left:auto; margin-right:auto;">
+          No hidden fees, no surprise charges. Pick the plan that fits your home and budget.
+        </p>
+      </div>
+      <div class="cc-pricing-grid">
+        <div class="cc-price-card" data-cc-anim>
+          <h3>Standard Clean</h3>
+          <div class="cc-price">$89<span>/visit</span></div>
+          <div class="cc-price-desc">Perfect for regular maintenance</div>
+          <ul class="cc-price-features">
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> All rooms dusted &amp; vacuumed</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Kitchen &amp; bathroom sanitized</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Floors mopped &amp; polished</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Up to 2 bedrooms</li>
+          </ul>
+          <button class="cc-price-cta cc-price-cta-secondary">Get started</button>
+        </div>
+        <div class="cc-price-card cc-popular" data-cc-anim>
+          <div class="cc-popular-badge">Most Popular</div>
+          <h3>Deep Clean</h3>
+          <div class="cc-price">$149<span>/visit</span></div>
+          <div class="cc-price-desc">Our most comprehensive package</div>
+          <ul class="cc-price-features">
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Everything in Standard</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Inside cabinets &amp; appliances</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Window sills &amp; baseboards</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Up to 4 bedrooms</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Eco-friendly products</li>
+          </ul>
+          <button class="cc-price-cta cc-price-cta-primary">Get started</button>
+        </div>
+        <div class="cc-price-card" data-cc-anim>
+          <h3>Move In/Out</h3>
+          <div class="cc-price">$249<span>/visit</span></div>
+          <div class="cc-price-desc">For new beginnings or fresh starts</div>
+          <ul class="cc-price-features">
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Everything in Deep Clean</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Wall spot cleaning</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Garage &amp; storage areas</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited rooms</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority scheduling</li>
+          </ul>
+          <button class="cc-price-cta cc-price-cta-secondary">Get started</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="cc-testimonials" id="reviews">
+    <div class="cc-container">
+      <div style="text-align:center; margin-bottom:64px;">
+        <div class="cc-section-label">Testimonials</div>
+        <h2 class="cc-section-title">Loved by homeowners everywhere</h2>
+        <p class="cc-section-desc" style="margin-left:auto; margin-right:auto;">
+          Real stories from real customers who transformed their homes with Cleaners Club.
+        </p>
+      </div>
+      <div class="cc-test-grid">
+        <div class="cc-test-card" data-cc-anim>
+          <div class="cc-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>&ldquo;I&rsquo;ve tried many cleaning services, but Cleaners Club is on another level. Consistent, reliable, and my home smells amazing every time.&rdquo;</blockquote>
+          <div class="cc-test-author">
+            <div class="cc-test-avatar" style="background:linear-gradient(135deg,#635bff,#a259ff)">J</div>
+            <div><h5>James Cooper</h5><span>Weekly subscriber</span></div>
+          </div>
+        </div>
+        <div class="cc-test-card" data-cc-anim>
+          <div class="cc-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>&ldquo;Booked a move-out clean and got my entire deposit back. The team was meticulous and so professional. Can&rsquo;t recommend enough!&rdquo;</blockquote>
+          <div class="cc-test-author">
+            <div class="cc-test-avatar" style="background:linear-gradient(135deg,#f9a825,#f4724e)">A</div>
+            <div><h5>Amanda Chen</h5><span>Move-out clean</span></div>
+          </div>
+        </div>
+        <div class="cc-test-card" data-cc-anim>
+          <div class="cc-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>&ldquo;As a busy parent, this service is a lifesaver. The eco-friendly products give me peace of mind with kids and pets around.&rdquo;</blockquote>
+          <div class="cc-test-author">
+            <div class="cc-test-avatar" style="background:linear-gradient(135deg,#1ea672,#34d399)">R</div>
+            <div><h5>Rachel Torres</h5><span>Bi-weekly plan</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cc-cta">
+    <div class="cc-cta-content">
+      <h2>Ready for a cleaner home?</h2>
+      <p>Start with your first clean today and discover why thousands of homeowners chose Cleaners Club.</p>
+      <form class="cc-cta-form" onsubmit="return false;">
+        <input class="cc-hero-input" type="email" placeholder="Email address">
+        <button class="cc-hero-btn" type="submit">
+          Book now
+          <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="cc-footer">
+    <div class="cc-footer-grid">
+      <div class="cc-footer-brand">
+        <div class="cc-nav-logo">
+          <svg viewBox="0 0 28 28" fill="none" width="28" height="28"><circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2"/><path d="M9 15.5c1-4 3.5-6 5-6s2.5 1.5 2.5 3-1 3-2.5 3-2-1-2-2.5 1-3 2.5-3 3 1.5 4 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+          Cleaners Club
+        </div>
+        <p>Professional home cleaning services trusted by thousands of homeowners. Making homes sparkle since 2024.</p>
+      </div>
+      <div class="cc-footer-col">
+        <h4>Services</h4>
+        <a href="#">Standard Clean</a>
+        <a href="#">Deep Clean</a>
+        <a href="#">Move In/Out</a>
+        <a href="#">Office Cleaning</a>
+        <a href="#">Carpet Cleaning</a>
+      </div>
+      <div class="cc-footer-col">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="cc-footer-col">
+        <h4>Resources</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Cleaning Tips</a>
+        <a href="#">Service Areas</a>
+        <a href="#">Partners</a>
+      </div>
+      <div class="cc-footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="cc-footer-bottom">
+      <span>&copy; 2026 Cleaners Club. All rights reserved.</span>
+      <span>Made with care, just like our cleans.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var nav = document.getElementById('ccNav');
+      window.addEventListener('scroll', function() {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+      });
+
+      var animEls = document.querySelectorAll('[data-cc-anim]');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var siblings = entry.target.parentElement.querySelectorAll('[data-cc-anim]');
+            var idx = Array.from(siblings).indexOf(entry.target);
+            setTimeout(function() {
+              entry.target.classList.add('cc-visible');
+              entry.target.style.transition = 'opacity .7s ease, transform .7s ease';
+            }, idx * 120);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      animEls.forEach(function(el) { observer.observe(el); });
+
+      document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = document.querySelector(a.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
