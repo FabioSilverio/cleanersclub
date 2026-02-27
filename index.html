@@ -263,7 +263,7 @@
     }
     .cc-gallery-item {
       border-radius:16px; overflow:hidden; position:relative;
-      aspect-ratio:4/3; opacity:0; transform:translateY(30px);
+      aspect-ratio:1/1; opacity:0; transform:translateY(30px);
       transition:all .4s ease;
     }
     .cc-gallery-item.cc-visible { opacity:1; transform:translateY(0); }
@@ -279,7 +279,6 @@
     }
     .cc-gallery-item:hover .cc-gallery-overlay { opacity:1; }
     .cc-gallery-overlay span { color:#fff; font-size:14px; font-weight:600; }
-    .cc-gallery-item:nth-child(1) { grid-row:span 2; aspect-ratio:auto; }
 
     /* ─── BEFORE/AFTER SLIDER ─── */
     .cc-compare { background:#f6f9fc; padding:120px 48px; }
@@ -622,7 +621,7 @@
       }
       .cc-gallery-benefit { position:static; animation:none; }
       .cc-gallery-grid { grid-template-columns:1fr 1fr; }
-      .cc-gallery-item:nth-child(1) { grid-row:auto; aspect-ratio:4/3; }
+      .cc-gallery-item { aspect-ratio:1/1; }
       .cc-footer-grid { grid-template-columns:1fr 1fr; }
       .cc-features,.cc-membership,.cc-how,.cc-pricing,.cc-testimonials,.cc-gallery,.cc-compare { padding-top:80px; padding-bottom:80px; }
     }
@@ -658,7 +657,7 @@
       .cc-member-actions .cc-price-cta { max-width:100% !important; }
       /* Gallery */
       .cc-gallery-grid { grid-template-columns:1fr; }
-      .cc-gallery-item:nth-child(1) { aspect-ratio:4/3; }
+      .cc-gallery-item { aspect-ratio:1/1; }
       /* Compare */
       .cc-compare-wrapper { margin-left:0; margin-right:0; }
       /* CTA */
@@ -759,14 +758,6 @@
 
   <!-- ─── HERO ─── -->
     <section class="cc-hero">
-    <div class="cc-announce">
-      <div class="cc-announce-pill">
-        <span class="cc-announce-badge">Inscrições 2026</span>
-        Novas vagas para cleaners autônomos e equipes parceiras
-        <svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M5.5 3l4 4-4 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-    </div>
-
     <div class="cc-hero-inner">
       <div class="cc-hero-left">
         <h1 class="cc-hero-title">
@@ -866,11 +857,7 @@
             <div class="cc-gallery-overlay"><span>Vidros e superfícies</span></div>
           </div>
           <div class="cc-gallery-item" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=600&h=450&fit=crop&q=80&auto=format" alt="Equipe de limpeza em ambiente residencial" loading="lazy">
-            <div class="cc-gallery-overlay"><span>Atendimento em equipe</span></div>
-          </div>
-          <div class="cc-gallery-item" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1582582494700-cd76f2f5b7e2?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional desinfetando banheiro" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1612152592159-fd39aa485562?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional com vassoura em serviço" loading="lazy">
             <div class="cc-gallery-overlay"><span>Desinfecção técnica</span></div>
           </div>
         </div>
