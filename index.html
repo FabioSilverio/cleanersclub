@@ -1,1156 +1,851 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cleaners Club — Associação de Profissionais da Limpeza</title>
-  <meta name="description" content="O Cleaners Club conecta cleaners e profissionais da limpeza a formação, oportunidades e uma rede de apoio para crescer com padrão profissional.">
-  <meta property="og:title" content="Cleaners Club — Associação de Profissionais da Limpeza">
-  <meta property="og:description" content="Associe-se ao Cleaners Club: capacitação, indicações, selo de qualidade e comunidade ativa de profissionais da limpeza.">
+  <title>Cleaners Club — Professional Home Cleaning Services</title>
+  <meta name="description" content="Join thousands of homeowners who trust Cleaners Club for professional home cleaning. Vetted cleaners, flexible scheduling, spotless results.">
+  <meta property="og:title" content="Cleaners Club — Professional Home Cleaning Services">
+  <meta property="og:description" content="Book vetted cleaning professionals. Flexible scheduling, eco-friendly products, satisfaction guaranteed.">
   <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #0a2540; overflow-x: hidden; line-height: 1.6;
-      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #0a2540;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    img { max-width:100%; display:block; }
+    img { max-width:100%; }
     a { text-decoration:none; color:inherit; }
-    ul { list-style:none; }
 
-    /* ─── NAV ─── */
+    /* ── NAV ── */
     .cc-nav {
-      position:fixed; top:0; left:0; right:0; z-index:1000;
-      padding:14px 48px; display:flex; align-items:center; justify-content:space-between;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 16px 48px;
+      display: flex; align-items: center; justify-content: space-between;
       transition: background .35s, box-shadow .35s;
     }
     .cc-nav.scrolled {
-      background:rgba(255,255,255,.94); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
-      box-shadow:0 1px 3px rgba(0,0,0,.07);
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 3px rgba(0,0,0,.08);
     }
-    .cc-logo { display:flex; align-items:center; gap:10px; font-weight:800; font-size:20px; color:#fff; transition:color .35s; }
-    .cc-nav.scrolled .cc-logo { color:#0a2540; }
-    .cc-logo svg { width:36px; height:36px; }
-    .cc-nav-links { display:flex; gap:32px; }
+    .cc-nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; font-size: 22px;
+      color: #fff; display: flex; align-items: center; gap: 8px;
+      transition: color .35s;
+    }
+    .cc-nav.scrolled .cc-nav-logo { color: #0a2540; }
+    .cc-nav-logo svg { width: 28px; height: 28px; }
+    .cc-nav-links { display:flex; gap:32px; align-items:center; }
     .cc-nav-links a {
-      font-size:14px; font-weight:600; color:rgba(255,255,255,.8); transition:color .2s; position:relative;
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,.85);
+      transition: color .2s; position: relative;
     }
-    .cc-nav.scrolled .cc-nav-links a { color:#425466; }
-    .cc-nav-links a:hover { color:#fff; }
-    .cc-nav.scrolled .cc-nav-links a:hover { color:#0a2540; }
+    .cc-nav.scrolled .cc-nav-links a { color: #425466; }
+    .cc-nav-links a:hover { color: #fff; }
+    .cc-nav.scrolled .cc-nav-links a:hover { color: #0a2540; }
     .cc-nav-links a::after {
       content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px;
-      background:#fff; transition:width .25s;
+      background:#fff; transition: width .25s;
     }
     .cc-nav.scrolled .cc-nav-links a::after { background:#635bff; }
     .cc-nav-links a:hover::after { width:100%; }
-    .cc-nav-right { display:flex; align-items:center; gap:16px; }
-    .cc-nav-signin { font-size:14px; font-weight:600; color:rgba(255,255,255,.9); transition:color .2s; display:flex; align-items:center; gap:4px; }
-    .cc-nav.scrolled .cc-nav-signin { color:#0a2540; }
-    .cc-nav-quote {
-      font-size:14px; font-weight:700; color:#fff; border:1.5px solid rgba(255,255,255,.45);
-      border-radius:22px; padding:7px 18px; transition:all .25s;
+    .cc-nav-cta { display:flex; align-items:center; gap:20px; }
+    .cc-nav-signin {
+      font-size:14px; font-weight:500; color:rgba(255,255,255,.9);
+      display:flex; align-items:center; gap:4px; transition: color .2s;
     }
-    .cc-nav.scrolled .cc-nav-quote { border-color:#0a2540; color:#0a2540; }
-    .cc-nav-quote:hover { background:rgba(255,255,255,.15); }
-    .cc-nav.scrolled .cc-nav-quote:hover { background:#0a2540; color:#fff; }
+    .cc-nav.scrolled .cc-nav-signin { color:#0a2540; }
+    .cc-nav-contact {
+      font-size:14px; font-weight:600; color:#fff;
+      border:1.5px solid rgba(255,255,255,.5); border-radius:20px;
+      padding:6px 16px; transition: all .25s;
+    }
+    .cc-nav.scrolled .cc-nav-contact { border-color:#0a2540; color:#0a2540; }
+    .cc-nav-contact:hover { background:rgba(255,255,255,.15); }
+    .cc-nav.scrolled .cc-nav-contact:hover { background:#0a2540; color:#fff; }
 
-    /* ─── HERO ─── */
+    /* ── MOBILE MENU ── */
+    .cc-menu-toggle {
+      display: none; background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .cc-menu-toggle span {
+      display: block; width: 22px; height: 2px; background: #fff;
+      margin: 5px 0; transition: all .3s; border-radius: 2px;
+    }
+    .cc-nav.scrolled .cc-menu-toggle span { background: #0a2540; }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .cc-announce { position: relative; z-index: 2; padding-top: 80px; }
+    .cc-announce-inner {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.18); backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 8px 18px; border-radius: 20px;
+      font-size: 13px; font-weight: 500; color: #fff;
+      margin-left: 48px;
+      animation: ccFadeDown .8s ease-out;
+      cursor: pointer; transition: background .2s;
+    }
+    .cc-announce-inner:hover { background: rgba(255,255,255,.28); }
+    .cc-announce-badge {
+      background: rgba(255,255,255,.25); padding: 2px 10px;
+      border-radius: 10px; font-size: 12px; font-weight: 600;
+    }
+
+    /* ── HERO ── */
     .cc-hero {
-      position:relative; min-height:100vh;
-      background:linear-gradient(135deg,#f9a825 0%,#f4724e 22%,#e8527a 44%,#c94080 58%,#9b45b5 78%,#6e5ce6 100%);
-      padding:0 48px 80px; display:flex; flex-direction:column;
-      perspective:1200px;
+      position: relative;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f9a825 0%, #f4724e 22%, #e8527a 44%, #c94080 58%, #9b45b5 78%, #6e5ce6 100%);
+      padding: 0 48px 80px;
+      display: flex; flex-direction: column;
     }
     .cc-hero::before {
-      content:''; position:absolute; inset:0;
+      content: ''; position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 20% 60%,rgba(251,176,52,.3) 0%,transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 30%,rgba(110,92,230,.25) 0%,transparent 55%);
-      pointer-events:none;
+        radial-gradient(ellipse 80% 60% at 20% 60%, rgba(251,176,52,.35) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 30%, rgba(110,92,230,.3) 0%, transparent 55%);
+      pointer-events: none;
     }
-
-    /* Announcement */
-    .cc-announce { position:relative; z-index:2; padding-top:78px; }
-    .cc-announce-pill {
-      display:inline-flex; align-items:center; gap:8px;
-      background:rgba(255,255,255,.16); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-      padding:7px 18px; border-radius:20px; font-size:13px; font-weight:600; color:#fff;
-      margin-left:48px; animation:ccFadeDown .8s ease-out; cursor:pointer; transition:background .2s;
+    .cc-hero-content {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      flex: 1; padding-top: 40px;
+      max-width: 1280px; margin: 0 auto; width: 100%;
     }
-    .cc-announce-pill:hover { background:rgba(255,255,255,.26); }
-    .cc-announce-badge { background:rgba(255,255,255,.22); padding:2px 10px; border-radius:10px; font-size:11px; font-weight:700; }
-
-    .cc-hero-inner {
-      position:relative; z-index:2; display:grid; grid-template-columns:1fr 1fr;
-      gap:48px; align-items:center; flex:1; padding-top:32px;
-      max-width:1320px; margin:0 auto; width:100%;
-    }
-    .cc-hero-left { animation:ccFadeUp 1s ease-out; }
+    .cc-hero-left { animation: ccFadeUp 1s ease-out; }
     .cc-hero-title {
-      font-weight:800; font-size:clamp(46px,5.2vw,78px);
-      line-height:1.06; color:#0a2540; margin-bottom:24px; letter-spacing:-1.5px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; font-size: clamp(48px, 5.5vw, 80px);
+      line-height: 1.05; color: #0a2540;
+      margin-bottom: 28px; letter-spacing: -1px;
     }
-    .cc-hero-title em {
-      font-style:normal;
-      background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.7) 100%);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      background-clip:text;
-    }
+    .cc-hero-title .cc-highlight { display: block; }
     .cc-hero-desc {
-      font-size:17px; color:rgba(10,37,64,.65); max-width:480px;
-      margin-bottom:36px; line-height:1.75; font-weight:500;
+      font-size: 18px; color: rgba(10,37,64,.7);
+      max-width: 480px; margin-bottom: 36px; line-height: 1.7;
     }
-    .cc-hero-form { display:flex; gap:10px; max-width:440px; }
-    .cc-hero-form-single { max-width:250px; }
+    .cc-hero-form { display: flex; gap: 12px; max-width: 440px; }
     .cc-hero-input {
-      flex:1; padding:15px 22px; border:none; border-radius:14px;
-      font-size:15px; font-family:inherit; background:#fff; color:#0a2540;
-      box-shadow:0 4px 24px rgba(0,0,0,.08); outline:none; transition:box-shadow .25s; font-weight:500;
+      flex:1; padding: 14px 20px;
+      border: none; border-radius: 25px;
+      font-size: 15px; font-family: inherit;
+      background: #fff; color: #0a2540;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      outline: none; transition: box-shadow .25s;
     }
-    .cc-hero-input::placeholder { color:#8492a6; font-weight:400; }
-    .cc-hero-input:focus { box-shadow:0 4px 28px rgba(99,91,255,.3); }
+    .cc-hero-input::placeholder { color: #8492a6; }
+    .cc-hero-input:focus { box-shadow: 0 4px 24px rgba(99,91,255,.25); }
     .cc-hero-btn {
-      padding:15px 30px; border:none; border-radius:14px;
-      background:#635bff; color:#fff; font-size:15px; font-weight:700; font-family:inherit;
-      cursor:pointer; display:flex; align-items:center; gap:6px;
-      white-space:nowrap; transition:all .25s;
-      box-shadow:0 4px 16px rgba(99,91,255,.4);
+      padding: 14px 28px; border: none; border-radius: 25px;
+      background: #635bff; color: #fff;
+      font-size: 15px; font-weight: 600; font-family: inherit;
+      cursor: pointer; display: flex; align-items: center; gap: 6px;
+      white-space: nowrap; transition: all .25s;
+      box-shadow: 0 4px 14px rgba(99,91,255,.35);
     }
-    .cc-hero-btn:hover { background:#4f46e5; box-shadow:0 8px 24px rgba(99,91,255,.5); transform:translateY(-2px); }
-    .cc-hero-btn svg { width:16px; height:16px; transition:transform .25s; }
-    .cc-hero-btn:hover svg { transform:translateX(3px); }
+    .cc-hero-btn:hover {
+      background: #4b45c7;
+      box-shadow: 0 6px 20px rgba(99,91,255,.45);
+      transform: translateY(-1px);
+    }
+    .cc-hero-btn svg { width:16px; height:16px; transition: transform .25s; }
+    .cc-hero-btn:hover svg { transform: translateX(3px); }
 
-    /* ─── HERO RIGHT: REALISTIC 3D CLEANING ELEMENTS ─── */
+    /* ── HERO RIGHT: FLOATING CARDS ── */
     .cc-hero-right {
-      position:relative; height:560px;
-      animation:ccFadeLeft 1s ease-out .2s both;
-      perspective:1000px;
+      position: relative; height: 540px;
+      animation: ccFadeLeft 1s ease-out .3s both;
     }
-    .cc-3d-scene {
-      position:absolute; inset:0;
-      transform-style:preserve-3d;
+    .cc-float-card {
+      position: absolute; background: #fff;
+      border-radius: 16px; padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.12);
+      transition: transform .4s ease;
     }
+    .cc-float-card:hover { transform: translateY(-6px) !important; }
 
-    /* Realistic image elements */
-    .cc-3d-elem {
-      position:absolute;
-      transform-style:preserve-3d;
-      will-change:transform;
-      pointer-events:none;
+    .cc-card-booking {
+      top: 0; left: 10%; width: 280px;
+      animation: ccBob 6s ease-in-out infinite;
     }
-    .cc-3d-elem img {
-      width:100%; height:100%; object-fit:contain;
-      border-radius:20px;
-      filter:drop-shadow(0 16px 32px rgba(0,0,0,.25));
+    .cc-card-booking-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, #635bff, #a259ff);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
     }
+    .cc-card-booking-icon svg { width: 28px; height: 28px; }
+    .cc-card-booking h4 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .cc-card-booking p { font-size: 14px; color: #8492a6; margin-bottom: 16px; }
+    .cc-card-booking-btn {
+      width: 100%; padding: 12px; border: none; border-radius: 10px;
+      background: #0a2540; color: #fff; font-size: 14px; font-weight: 600;
+      font-family: inherit; cursor: pointer; transition: background .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .cc-card-booking-btn:hover { background: #1a3a5c; }
+    .cc-card-booking-sep { text-align:center; font-size:13px; color:#8492a6; margin:10px 0; }
+    .cc-card-booking-fields { display:flex; flex-direction:column; gap:8px; }
+    .cc-card-booking-field {
+      padding: 10px 14px; border:1px solid #e3e8ee; border-radius:8px;
+      font-size:13px; color:#0a2540; display:flex; justify-content:space-between;
+    }
+    .cc-card-booking-field span { color:#8492a6; }
 
-    .cc-elem-mop {
-      top:-5%; right:2%; width:140px; height:180px;
-      animation:cc3dFloat2 8s ease-in-out infinite;
+    .cc-card-stats {
+      top: 20px; right: 0; width: 260px;
+      animation: ccBob 6s ease-in-out 1s infinite;
     }
-    .cc-elem-mop img { border-radius:24px; }
+    .cc-card-stats-header { display:flex; justify-content:space-between; margin-bottom:4px; }
+    .cc-card-stats-header h4 { font-size:14px; font-weight:600; color:#0a2540; }
+    .cc-card-stats-header span { font-size:12px; color:#8492a6; }
+    .cc-stats-amount { font-size:26px; font-weight:700; color:#0a2540; margin-bottom:2px; }
+    .cc-stats-sub { font-size:13px; color:#8492a6; margin-bottom:12px; }
+    .cc-stats-badge {
+      display:inline-block; background:#e6f9ed; color:#1ea672;
+      font-size:12px; font-weight:600; padding:2px 8px; border-radius:8px;
+      margin-left:8px;
+    }
+    .cc-stats-graph { width:100%; height:80px; position:relative; }
+    .cc-stats-graph svg { width:100%; height:100%; }
 
-    .cc-elem-spray {
-      top:4%; left:-2%; width:120px; height:120px;
-      animation:cc3dFloat1 7s ease-in-out infinite;
+    .cc-card-review {
+      bottom: 20px; left: 5%; width: 300px;
+      animation: ccBob 6s ease-in-out 2s infinite;
     }
+    .cc-card-review-top { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+    .cc-card-review-avatar {
+      width:42px; height:42px; border-radius:50%;
+      background: linear-gradient(135deg, #f9a825, #e8527a);
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-weight:700; font-size:16px;
+    }
+    .cc-card-review-info h5 { font-size:14px; font-weight:600; }
+    .cc-card-review-info span { font-size:12px; color:#8492a6; }
+    .cc-card-review-stars { color:#f9a825; font-size:16px; margin-bottom:8px; letter-spacing:2px; }
+    .cc-card-review p { font-size:13px; color:#425466; line-height:1.6; }
 
-    .cc-elem-broom {
-      bottom:16%; left:-4%; width:120px; height:170px;
-      animation:cc3dFloat3 6.5s ease-in-out infinite;
-    }
-
-    .cc-elem-bucket {
-      bottom:2%; right:28%; width:140px; height:140px;
-      animation:cc3dFloat5 7s ease-in-out infinite;
-    }
-
-    .cc-elem-gloves {
-      bottom:2%; right:-2%; width:120px; height:120px;
-      animation:cc3dFloat4 7.5s ease-in-out infinite;
-    }
-
-    /* Bubbles */
-    .cc-bubble {
-      position:absolute; border-radius:50%;
-      background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.75),rgba(255,255,255,.05) 70%);
-      border:1.5px solid rgba(255,255,255,.35);
-      pointer-events:none;
-      box-shadow:inset 0 -4px 8px rgba(255,255,255,.15), 0 2px 8px rgba(0,0,0,.06);
-    }
-    .cc-bubble-1 { width:36px; height:36px; top:28%; left:2%; animation:ccBubbleUp 6s ease-in-out infinite; }
-    .cc-bubble-2 { width:22px; height:22px; top:55%; right:5%; animation:ccBubbleUp 8s ease-in-out 1s infinite; }
-    .cc-bubble-3 { width:28px; height:28px; top:72%; left:20%; animation:ccBubbleUp 7s ease-in-out 2s infinite; }
-    .cc-bubble-4 { width:16px; height:16px; top:18%; left:42%; animation:ccBubbleUp 5s ease-in-out .5s infinite; }
-    .cc-bubble-5 { width:20px; height:20px; bottom:28%; right:38%; animation:ccBubbleUp 9s ease-in-out 3s infinite; }
-    .cc-bubble-6 { width:12px; height:12px; top:45%; left:15%; animation:ccBubbleUp 6.5s ease-in-out 1.5s infinite; }
-
-    /* ── Floating Card (center, above elements) ── */
-    .cc-hero-card {
-      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-      background:rgba(255,255,255,.95); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
-      border-radius:22px; padding:32px; width:280px;
-      box-shadow:0 24px 64px rgba(0,0,0,.18), 0 0 0 1px rgba(255,255,255,.2);
-      z-index:20;
-      animation:ccCardPulse 6s ease-in-out infinite;
-    }
-    .cc-hero-card-icon {
-      width:52px; height:52px; border-radius:14px;
-      background:linear-gradient(135deg,#635bff,#a259ff);
-      display:flex; align-items:center; justify-content:center; margin-bottom:16px;
-    }
-    .cc-hero-card h4 { font-size:18px; font-weight:700; margin-bottom:4px; }
-    .cc-hero-card p { font-size:13px; color:#8492a6; margin-bottom:16px; }
-    .cc-hero-card-btn {
-      width:100%; padding:12px; border:none; border-radius:12px;
-      background:#0a2540; color:#fff; font-size:14px; font-weight:700;
-      font-family:inherit; cursor:pointer; transition:background .2s;
-    }
-    .cc-hero-card-btn:hover { background:#1a3a5c; }
-    .cc-hero-card-stats {
-      display:flex; gap:16px; margin-top:16px; padding-top:16px;
-      border-top:1px solid rgba(0,0,0,.06);
-    }
-    .cc-hero-card-stat { flex:1; }
-    .cc-hero-card-stat strong { display:block; font-size:20px; font-weight:800; color:#0a2540; }
-    .cc-hero-card-stat span { font-size:11px; color:#8492a6; font-weight:600; text-transform:uppercase; letter-spacing:.5px; }
-
-    /* ─── SECTIONS COMMON ─── */
-    .cc-container { max-width:1280px; margin:0 auto; }
+    /* ── SECTION UTILITIES ── */
+    .cc-container { max-width: 1280px; margin: 0 auto; }
     .cc-section-label {
-      font-size:13px; font-weight:700; color:#635bff;
-      text-transform:uppercase; letter-spacing:2.5px; margin-bottom:12px;
+      font-size: 13px; font-weight: 600; color: #635bff;
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
     }
     .cc-section-title {
-      font-weight:800; font-size:clamp(30px,3.2vw,46px);
-      color:#0a2540; margin-bottom:16px; line-height:1.15; letter-spacing:-.5px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800; font-size: clamp(32px, 3.5vw, 48px);
+      color: #0a2540; margin-bottom: 16px; line-height: 1.15;
     }
     .cc-section-desc {
-      font-size:17px; color:#425466; max-width:560px; margin-bottom:64px; line-height:1.75; font-weight:500;
+      font-size: 17px; color: #425466; max-width: 560px; margin-bottom: 64px; line-height: 1.7;
     }
 
-    /* ─── GALLERY: CLEAN HOMES ─── */
-    .cc-gallery { background:#fff; padding:120px 48px; overflow:hidden; }
-    .cc-gallery-stage { position:relative; }
-    .cc-gallery-benefits {
-      position:absolute; inset:0; z-index:6; pointer-events:none;
+    /* ── FEATURES ── */
+    .cc-features { background: #fff; padding: 120px 48px; }
+    .cc-features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
     }
-    .cc-gallery-benefit {
-      position:absolute; display:inline-flex; align-items:center; gap:8px;
-      padding:10px 14px; border-radius:999px; border:1px solid rgba(99,91,255,.18);
-      background:rgba(255,255,255,.93); color:#0a2540; font-size:12px; font-weight:700;
-      letter-spacing:.3px; box-shadow:0 10px 26px rgba(10,37,64,.12);
-      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-      pointer-events:auto; animation:ccBenefitFloat 5s ease-in-out infinite;
-    }
-    .cc-gallery-benefit::before {
-      content:''; width:8px; height:8px; border-radius:50%;
-      background:linear-gradient(135deg,#635bff,#8b7dff); flex-shrink:0;
-      box-shadow:0 0 0 4px rgba(99,91,255,.12);
-    }
-    .cc-benefit-1 { top:14px; right:18px; animation-delay:0s; }
-    .cc-benefit-2 { top:42%; right:14px; animation-delay:.5s; }
-    .cc-benefit-3 { bottom:18px; left:20%; animation-delay:1s; }
-    .cc-benefit-4 { bottom:10px; right:26%; animation-delay:1.5s; }
-    .cc-gallery-grid {
-      display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
-    }
-    .cc-gallery-item {
-      border-radius:16px; overflow:hidden; position:relative;
-      aspect-ratio:1/1; opacity:0; transform:translateY(30px);
-      transition:all .4s ease;
-    }
-    .cc-gallery-item.cc-visible { opacity:1; transform:translateY(0); }
-    .cc-gallery-item img {
-      width:100%; height:100%; object-fit:cover;
-      transition:transform .6s ease;
-    }
-    .cc-gallery-item:hover img { transform:scale(1.06); }
-    .cc-gallery-item .cc-gallery-overlay {
-      position:absolute; inset:0;
-      background:linear-gradient(to top,rgba(10,37,64,.6) 0%,transparent 50%);
-      opacity:0; transition:opacity .3s; display:flex; align-items:flex-end; padding:20px;
-    }
-    .cc-gallery-item:hover .cc-gallery-overlay { opacity:1; }
-    .cc-gallery-overlay span { color:#fff; font-size:14px; font-weight:600; }
-
-    /* ─── BEFORE/AFTER SLIDER ─── */
-    .cc-compare { background:#f6f9fc; padding:120px 48px; }
-    .cc-compare-wrapper {
-      position:relative; max-width:900px; margin:0 auto;
-      border-radius:20px; overflow:hidden;
-      box-shadow:0 24px 64px rgba(0,0,0,.12);
-      aspect-ratio:16/9; user-select:none; cursor:col-resize;
-    }
-    .cc-compare-layer {
-      position:absolute; inset:0; width:100%; height:100%;
-    }
-    .cc-compare-layer img {
-      width:100%; height:100%; object-fit:cover;
-    }
-    /* "Before" dirty effects */
-    .cc-compare-before {
-      z-index:1;
-    }
-    .cc-compare-before img {
-      filter:none;
-    }
-    /* "After" clean version */
-    .cc-compare-after {
-      z-index:2;
-      clip-path:inset(0 0 0 50%);
-    }
-    .cc-compare-after img {
-      filter:none;
-    }
-    .cc-compare-handle {
-      position:absolute; top:0; bottom:0; left:50%; width:4px;
-      background:#fff; z-index:10; transform:translateX(-50%);
-      box-shadow:0 0 16px rgba(0,0,0,.3);
-    }
-    .cc-compare-handle::before {
-      content:''; position:absolute; top:50%; left:50%;
-      transform:translate(-50%,-50%);
-      width:52px; height:52px; border-radius:50%;
-      background:#fff; box-shadow:0 4px 24px rgba(0,0,0,.25);
-    }
-    .cc-compare-handle-arrows {
-      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-      z-index:11; display:flex; align-items:center; gap:10px; pointer-events:none;
-    }
-    .cc-compare-handle-arrows svg { width:18px; height:18px; }
-    .cc-compare-label {
-      position:absolute; top:20px; padding:7px 18px; border-radius:10px;
-      font-size:12px; font-weight:700; z-index:15; letter-spacing:1px;
-      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-    }
-    .cc-compare-label-before { left:20px; background:rgba(220,38,38,.88); color:#fff; }
-    .cc-compare-label-after { right:20px; background:rgba(30,166,114,.88); color:#fff; }
-
-    /* ─── FEATURES ─── */
-    .cc-features { background:#fff; padding:120px 48px; }
-    .cc-features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
     .cc-feature-card {
-      padding:36px; border-radius:20px;
-      background:#f6f9fc; border:1px solid #e8ecf1;
-      transition:all .35s; opacity:0; transform:translateY(30px);
+      padding: 36px; border-radius: 16px;
+      background: #f6f9fc; border: 1px solid #e3e8ee;
+      transition: all .35s ease;
+      opacity: 0; transform: translateY(30px);
     }
-    .cc-feature-card.cc-visible { opacity:1; transform:translateY(0); }
-    .cc-feature-card:hover { transform:translateY(-8px); box-shadow:0 16px 48px rgba(0,0,0,.08); border-color:#d0d5dd; }
+    .cc-feature-card.cc-visible { opacity: 1; transform: translateY(0); }
+    .cc-feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.08);
+      border-color: #d0d5dd;
+    }
     .cc-feature-icon {
-      width:52px; height:52px; border-radius:14px;
-      display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
     }
-    .cc-feature-icon svg { width:26px; height:26px; }
-    .cc-feature-card h3 { font-size:18px; font-weight:700; margin-bottom:10px; }
-    .cc-feature-card p { font-size:15px; color:#425466; line-height:1.7; }
+    .cc-feature-icon svg { width: 26px; height: 26px; }
+    .cc-feature-card h3 { font-size: 18px; font-weight: 700; color: #0a2540; margin-bottom: 10px; }
+    .cc-feature-card p { font-size: 15px; color: #425466; line-height: 1.7; }
 
-    /* ─── HOW IT WORKS ─── */
-    /* ─── MEMBERSHIP ─── */
-    .cc-membership { background:#f6f9fc; padding:120px 48px; }
-    .cc-member-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:34px; align-items:start; }
-    .cc-member-cards { display:grid; gap:16px; }
-    .cc-member-card {
-      background:#fff; border:1px solid #e8ecf1; border-radius:18px; padding:24px;
-      opacity:0; transform:translateY(28px); transition:all .35s;
+    /* ── HOW IT WORKS ── */
+    .cc-how {
+      background: #0a2540; padding: 120px 48px; position: relative; overflow: hidden;
     }
-    .cc-member-card.cc-visible { opacity:1; transform:translateY(0); }
-    .cc-member-card h3 { font-size:18px; font-weight:700; margin-bottom:8px; }
-    .cc-member-card p { font-size:15px; color:#425466; line-height:1.7; }
-    .cc-member-tag {
-      display:inline-flex; align-items:center; gap:8px; border-radius:999px;
-      background:#eef2ff; color:#4f46e5; font-size:12px; font-weight:700;
-      text-transform:uppercase; letter-spacing:.6px; padding:6px 12px; margin-bottom:14px;
-    }
-    .cc-member-actions { display:flex; gap:12px; margin-top:26px; flex-wrap:wrap; }
-    .cc-member-photo-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
-    .cc-member-photo {
-      border-radius:18px; overflow:hidden; aspect-ratio:4/5;
-      opacity:0; transform:translateY(28px); transition:all .35s;
-      box-shadow:0 12px 34px rgba(10,37,64,.12);
-    }
-    .cc-member-photo.cc-visible { opacity:1; transform:translateY(0); }
-    .cc-member-photo img { width:100%; height:100%; object-fit:cover; }
-
-    .cc-how { background:#0a2540; padding:120px 48px; position:relative; overflow:hidden; }
     .cc-how::before {
       content:''; position:absolute; top:-200px; right:-200px;
       width:600px; height:600px; border-radius:50%;
-      background:radial-gradient(circle,rgba(99,91,255,.12),transparent 70%);
+      background: radial-gradient(circle, rgba(99,91,255,.15), transparent 70%);
     }
-    .cc-how .cc-section-label { color:#7a73ff; }
-    .cc-how .cc-section-title { color:#fff; }
-    .cc-how .cc-section-desc { color:rgba(255,255,255,.55); }
-    .cc-how-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:48px; position:relative; z-index:2; }
-    .cc-step { text-align:center; opacity:0; transform:translateY(30px); }
+    .cc-how .cc-section-label { color: #7a73ff; }
+    .cc-how .cc-section-title { color: #fff; }
+    .cc-how .cc-section-desc { color: rgba(255,255,255,.6); }
+    .cc-how-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 48px; position: relative; z-index: 2;
+    }
+    .cc-step { text-align: center; opacity: 0; transform: translateY(30px); }
     .cc-step.cc-visible { opacity:1; transform:translateY(0); }
     .cc-step-num {
-      width:64px; height:64px; border-radius:50%;
-      background:linear-gradient(135deg,#635bff,#a259ff);
-      color:#fff; font-size:24px; font-weight:800;
-      display:flex; align-items:center; justify-content:center;
-      margin:0 auto 24px; box-shadow:0 8px 30px rgba(99,91,255,.4);
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, #635bff, #a259ff);
+      color: #fff; font-size: 24px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 30px rgba(99,91,255,.4);
     }
     .cc-step h3 { font-size:20px; font-weight:700; color:#fff; margin-bottom:10px; }
-    .cc-step p { font-size:15px; color:rgba(255,255,255,.5); line-height:1.7; max-width:300px; margin:0 auto; }
+    .cc-step p { font-size:15px; color:rgba(255,255,255,.55); line-height:1.7; max-width:300px; margin:0 auto; }
 
-    /* ─── PRICING ─── */
-    .cc-pricing { background:#f6f9fc; padding:120px 48px; }
-    .cc-pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; max-width:1000px; margin:0 auto; }
+    /* ── PRICING ── */
+    .cc-pricing { background: #f6f9fc; padding: 120px 48px; }
+    .cc-pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px; max-width: 1000px; margin: 0 auto;
+    }
     .cc-price-card {
-      background:#fff; border-radius:20px; padding:40px 32px;
-      border:1px solid #e8ecf1; text-align:center; transition:all .35s;
-      position:relative; opacity:0; transform:translateY(30px);
+      background: #fff; border-radius: 16px; padding: 40px 32px;
+      border: 1px solid #e3e8ee; text-align: center;
+      transition: all .35s; position: relative;
+      opacity:0; transform:translateY(30px);
     }
     .cc-price-card.cc-visible { opacity:1; transform:translateY(0); }
-    .cc-price-card:hover { transform:translateY(-8px); box-shadow:0 20px 56px rgba(0,0,0,.1); }
-    .cc-price-card.cc-popular { border-color:#635bff; box-shadow:0 8px 32px rgba(99,91,255,.15); }
+    .cc-price-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.1);
+    }
+    .cc-price-card.cc-popular {
+      border-color: #635bff;
+      box-shadow: 0 8px 32px rgba(99,91,255,.15);
+    }
     .cc-popular-badge {
-      position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-      background:linear-gradient(135deg,#635bff,#a259ff);
-      color:#fff; font-size:12px; font-weight:700; padding:4px 18px; border-radius:12px;
+      position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+      background: linear-gradient(135deg, #635bff, #a259ff);
+      color:#fff; font-size:12px; font-weight:600;
+      padding:4px 16px; border-radius:12px;
     }
     .cc-price-card h3 { font-size:20px; font-weight:700; margin-bottom:8px; }
-    .cc-price-card .cc-price { font-size:48px; font-weight:800; color:#0a2540; margin-bottom:4px; letter-spacing:-1px; }
+    .cc-price-card .cc-price {
+      font-family:'Playfair Display',serif; font-size:48px; font-weight:900; color:#0a2540;
+      margin-bottom:4px;
+    }
     .cc-price-card .cc-price span { font-size:18px; font-weight:500; color:#8492a6; }
     .cc-price-card .cc-price-desc { font-size:14px; color:#8492a6; margin-bottom:28px; }
-    .cc-price-features { text-align:left; margin-bottom:32px; }
+    .cc-price-features { list-style:none; text-align:left; margin-bottom:32px; }
     .cc-price-features li {
-      font-size:14px; color:#425466; padding:9px 0;
-      border-bottom:1px solid #f0f3f7; display:flex; align-items:center; gap:10px;
+      font-size:14px; color:#425466; padding:8px 0;
+      border-bottom:1px solid #f0f3f7;
+      display:flex; align-items:center; gap:10px;
     }
-    .cc-price-features li svg { width:18px; height:18px; flex-shrink:0; }
+    .cc-price-features li svg { width:18px; height:18px; color:#1ea672; flex-shrink:0; }
     .cc-price-cta {
-      width:100%; padding:14px; border:none; border-radius:14px;
-      font-size:15px; font-weight:700; font-family:inherit; cursor:pointer; transition:all .25s;
-      display:flex; align-items:center; justify-content:center; text-align:center; text-decoration:none;
+      width:100%; padding:14px; border:none; border-radius:12px;
+      font-size:15px; font-weight:600; font-family:inherit;
+      cursor:pointer; transition: all .25s;
     }
-    .cc-price-cta-primary { background:#635bff; color:#fff; box-shadow:0 4px 14px rgba(99,91,255,.35); }
-    .cc-price-cta-primary:hover { background:#4f46e5; transform:translateY(-2px); }
+    .cc-price-cta-primary {
+      background:#635bff; color:#fff;
+      box-shadow: 0 4px 14px rgba(99,91,255,.35);
+    }
+    .cc-price-cta-primary:hover { background:#4b45c7; transform:translateY(-2px); }
     .cc-price-cta-secondary { background:#f6f9fc; color:#0a2540; border:1px solid #e3e8ee; }
     .cc-price-cta-secondary:hover { background:#edf1f5; }
 
-    /* ─── TESTIMONIALS ─── */
-    .cc-testimonials { background:#fff; padding:120px 48px; }
-    .cc-test-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+    /* ── TESTIMONIALS ── */
+    .cc-testimonials { background: #fff; padding: 120px 48px; }
+    .cc-test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
     .cc-test-card {
-      padding:36px; border-radius:20px; background:#f6f9fc; border:1px solid #e8ecf1;
-      opacity:0; transform:translateY(30px); transition:all .35s;
+      padding: 36px; border-radius: 16px;
+      background: #f6f9fc; border: 1px solid #e3e8ee;
+      opacity:0; transform:translateY(30px); transition: all .35s;
     }
     .cc-test-card.cc-visible { opacity:1; transform:translateY(0); }
-    .cc-test-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(0,0,0,.06); }
+    .cc-test-card:hover { transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,0,0,.06); }
     .cc-test-stars { color:#f9a825; font-size:18px; margin-bottom:16px; letter-spacing:2px; }
-    .cc-test-card blockquote { font-size:15px; color:#425466; line-height:1.7; margin-bottom:20px; font-style:italic; }
+    .cc-test-card blockquote {
+      font-size:15px; color:#425466; line-height:1.7; margin-bottom:20px; font-style:italic;
+    }
     .cc-test-author { display:flex; align-items:center; gap:12px; }
     .cc-test-avatar {
-      width:42px; height:42px; border-radius:50%;
+      width:40px; height:40px; border-radius:50%;
       display:flex; align-items:center; justify-content:center;
-      color:#fff; font-weight:700; font-size:15px; overflow:hidden;
+      color:#fff; font-weight:700; font-size:15px;
     }
-    .cc-test-avatar img { width:100%; height:100%; object-fit:cover; }
-    .cc-test-author h5 { font-size:14px; font-weight:700; }
+    .cc-test-author h5 { font-size:14px; font-weight:600; color:#0a2540; }
     .cc-test-author span { font-size:12px; color:#8492a6; }
 
-    /* ─── CTA ─── */
+    /* ── CTA ── */
     .cc-cta {
-      background:linear-gradient(135deg,#f9a825 0%,#f4724e 22%,#e8527a 44%,#c94080 58%,#9b45b5 78%,#6e5ce6 100%);
-      padding:120px 48px; text-align:center; position:relative; overflow:hidden;
+      background: linear-gradient(135deg, #f9a825 0%, #f4724e 22%, #e8527a 44%, #c94080 58%, #9b45b5 78%, #6e5ce6 100%);
+      padding: 120px 48px; text-align: center; position: relative; overflow: hidden;
     }
     .cc-cta::before {
       content:''; position:absolute; inset:0;
-      background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(255,255,255,.1),transparent 70%);
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(255,255,255,.1), transparent 70%);
     }
     .cc-cta-content { position:relative; z-index:2; }
-    .cc-cta h2 { font-weight:800; font-size:clamp(34px,3.8vw,54px); color:#0a2540; margin-bottom:16px; letter-spacing:-.5px; }
-    .cc-cta p { font-size:18px; color:rgba(10,37,64,.6); margin-bottom:40px; max-width:500px; margin-left:auto; margin-right:auto; font-weight:500; }
-    .cc-cta-form { display:flex; gap:10px; justify-content:center; max-width:440px; margin:0 auto; }
-
-    /* ─── FOOTER ─── */
-    .cc-footer { background:#0a2540; padding:80px 48px 40px; color:rgba(255,255,255,.6); }
-    .cc-footer-grid {
-      display:grid; grid-template-columns:2fr repeat(4,1fr);
-      gap:48px; margin-bottom:60px; max-width:1280px; margin-left:auto; margin-right:auto;
+    .cc-cta h2 {
+      font-family:'Playfair Display',serif; font-weight:900;
+      font-size:clamp(36px,4vw,56px); color:#0a2540; margin-bottom:16px;
     }
-    .cc-footer-brand .cc-logo { color:#fff; margin-bottom:16px; }
+    .cc-cta p {
+      font-size:18px; color:rgba(10,37,64,.65); margin-bottom:40px;
+      max-width:500px; margin-left:auto; margin-right:auto;
+    }
+    .cc-cta-form { display:flex; gap:12px; justify-content:center; max-width:440px; margin:0 auto; }
+
+    /* ── FOOTER ── */
+    .cc-footer {
+      background: #0a2540; padding: 80px 48px 40px; color: rgba(255,255,255,.6);
+    }
+    .cc-footer-grid {
+      display: grid; grid-template-columns: 2fr repeat(4, 1fr);
+      gap: 48px; margin-bottom: 60px; max-width: 1280px; margin-left: auto; margin-right: auto;
+    }
+    .cc-footer-brand .cc-nav-logo { color:#fff; margin-bottom:16px; }
     .cc-footer-brand p { font-size:14px; line-height:1.7; max-width:280px; }
-    .cc-footer-col h4 { font-size:12px; font-weight:700; color:#fff; text-transform:uppercase; letter-spacing:2px; margin-bottom:20px; }
-    .cc-footer-col a { display:block; font-size:14px; color:rgba(255,255,255,.45); margin-bottom:12px; transition:color .2s; font-weight:500; }
+    .cc-footer-col h4 {
+      font-size:13px; font-weight:600; color:#fff;
+      text-transform:uppercase; letter-spacing:1.5px; margin-bottom:20px;
+    }
+    .cc-footer-col a {
+      display:block; font-size:14px; color:rgba(255,255,255,.5);
+      margin-bottom:12px; transition: color .2s;
+    }
     .cc-footer-col a:hover { color:#fff; }
     .cc-footer-bottom {
-      border-top:1px solid rgba(255,255,255,.08); padding-top:28px;
+      border-top:1px solid rgba(255,255,255,.1); padding-top:28px;
       display:flex; justify-content:space-between; font-size:13px;
-      max-width:1280px; margin:0 auto;
+      max-width: 1280px; margin: 0 auto;
     }
 
-    /* ─── KEYFRAMES ─── */
-    @keyframes ccFadeUp { from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)} }
-    @keyframes ccFadeDown { from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)} }
-    @keyframes ccFadeLeft { from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)} }
-    @keyframes ccCardPulse { 0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.02)} }
+    /* ── FLOATING ELEMENTS ── */
+    .cc-float-elem { position: absolute; pointer-events: none; z-index: 1; }
+    .cc-bubble-1 {
+      width:180px; height:180px; border-radius:50%;
+      background: radial-gradient(circle, rgba(255,255,255,.12), transparent 70%);
+      top:15%; right:8%; animation: ccFloat 8s ease-in-out infinite;
+    }
+    .cc-bubble-2 {
+      width:120px; height:120px; border-radius:50%;
+      background: radial-gradient(circle, rgba(255,255,255,.08), transparent 70%);
+      bottom:20%; left:5%; animation: ccFloat 10s ease-in-out 2s infinite;
+    }
+    .cc-sparkle {
+      width:8px; height:8px; border-radius:50%; background:#fff;
+      opacity:.4; animation: ccTwinkle 3s ease-in-out infinite;
+    }
+    .cc-sparkle-1 { top:25%; left:15%; animation-delay:0s; }
+    .cc-sparkle-2 { top:40%; right:25%; animation-delay:1s; }
+    .cc-sparkle-3 { bottom:30%; left:30%; animation-delay:2s; }
+    .cc-sparkle-4 { top:60%; left:55%; animation-delay:.5s; }
 
-    @keyframes cc3dFloat1 {
-      0%,100% { transform:translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-      25% { transform:translateY(-18px) rotateX(8deg) rotateY(-12deg) rotateZ(3deg); }
-      50% { transform:translateY(-8px) rotateX(-5deg) rotateY(8deg) rotateZ(-2deg); }
-      75% { transform:translateY(-22px) rotateX(6deg) rotateY(-6deg) rotateZ(4deg); }
-    }
-    @keyframes cc3dFloat2 {
-      0%,100% { transform:translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-      33% { transform:translateY(-20px) rotateX(-10deg) rotateY(15deg) rotateZ(-5deg); }
-      66% { transform:translateY(-10px) rotateX(7deg) rotateY(-10deg) rotateZ(3deg); }
-    }
-    @keyframes cc3dFloat3 {
-      0%,100% { transform:translateY(0) rotateX(0deg) rotateY(0deg) scale(1); }
-      50% { transform:translateY(-16px) rotateX(12deg) rotateY(-8deg) scale(1.05); }
-    }
-        @keyframes cc3dFloat4 {
-      0%,100% { transform:translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-      40% { transform:translateY(-14px) rotateX(-8deg) rotateY(10deg) rotateZ(5deg); }
-      80% { transform:translateY(-20px) rotateX(5deg) rotateY(-12deg) rotateZ(-3deg); }
-    }
-    @keyframes cc3dFloat5 {
-      0%,100% { transform:translateY(0) rotateX(0deg) rotateY(0deg) scale(1); }
-      35% { transform:translateY(-12px) rotateX(8deg) rotateY(-8deg) scale(1.02); }
-      70% { transform:translateY(-20px) rotateX(-6deg) rotateY(10deg) scale(1.05); }
-    }
-    @keyframes ccBubbleUp {
-      0%,100% { transform:translateY(0) scale(1); opacity:.6; }
-      50% { transform:translateY(-30px) scale(1.15); opacity:.9; }
-    }
-    @keyframes ccBenefitFloat {
-      0%,100% { transform:translateY(0); }
-      50% { transform:translateY(-7px); }
-    }
+    /* ── KEYFRAMES ── */
+    @keyframes ccFadeUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes ccFadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes ccFadeLeft { from { opacity:0; transform:translateX(60px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes ccBob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+    @keyframes ccFloat { 0%,100% { transform:translate(0,0); } 50% { transform:translate(15px,-20px); } }
+    @keyframes ccTwinkle { 0%,100% { opacity:.2; transform:scale(.8); } 50% { opacity:.7; transform:scale(1.3); } }
+    @keyframes ccDrawLine { from { stroke-dashoffset: 200; } to { stroke-dashoffset: 0; } }
 
-    /* ─── HAMBURGER & MOBILE MENU ─── */
-    .cc-hamburger {
-      display:none; flex-direction:column; justify-content:center; gap:5px;
-      width:44px; height:44px; border:none; background:none; cursor:pointer;
-      padding:8px; border-radius:8px; transition:background .2s; flex-shrink:0;
-    }
-    .cc-hamburger:hover { background:rgba(255,255,255,.15); }
-    .cc-nav.scrolled .cc-hamburger:hover { background:rgba(0,0,0,.06); }
-    .cc-hamburger span {
-      display:block; width:22px; height:2px; border-radius:2px;
-      background:#fff; transition:transform .3s, opacity .3s; transform-origin:center;
-    }
-    .cc-nav.scrolled .cc-hamburger span { background:#0a2540; }
-    .cc-hamburger.active span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
-    .cc-hamburger.active span:nth-child(2) { opacity:0; transform:scaleX(0); }
-    .cc-hamburger.active span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-
-    .cc-mobile-menu {
-      position:fixed; inset:0; z-index:998;
-      background:rgba(10,37,64,.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
-      opacity:0; pointer-events:none; transition:opacity .3s; overflow-y:auto;
-      padding:80px 24px 40px;
-    }
-    .cc-mobile-menu.active { opacity:1; pointer-events:all; }
-    .cc-mobile-menu a {
-      font-size:clamp(22px,7vw,30px); font-weight:800; color:rgba(255,255,255,.7);
-      padding:14px 24px; border-radius:12px; transition:all .2s; letter-spacing:-.5px;
-      text-align:center; width:100%; max-width:340px;
-    }
-    .cc-mobile-menu a:hover { color:#fff; background:rgba(255,255,255,.08); }
-    .cc-mm-divider { width:40px; height:1px; background:rgba(255,255,255,.12); margin:12px auto; }
-    .cc-mobile-menu .cc-mm-book {
-      margin-top:8px; background:#635bff; color:#fff !important;
-      border-radius:16px; box-shadow:0 8px 24px rgba(99,91,255,.4);
-      padding:16px 40px !important;
-    }
-    .cc-mobile-menu .cc-mm-book:hover { background:#4f46e5 !important; color:#fff !important; }
-
-    /* ─── RESPONSIVE ─── */
-    @media(max-width:1360px) {
-      .cc-nav { padding:12px 30px; }
-      .cc-hero { padding:0 30px 64px; }
-      .cc-announce-pill { margin-left:0; }
-      .cc-hero-inner { max-width:1160px; gap:30px; padding-top:20px; }
-      .cc-hero-title { font-size:clamp(40px,4.5vw,62px); letter-spacing:-1px; }
-      .cc-hero-desc { font-size:16px; margin-bottom:30px; max-width:520px; }
-      .cc-hero-right { height:500px; }
-      .cc-3d-scene { transform:scale(.92); transform-origin:center; }
-      .cc-hero-card { width:258px; padding:26px; }
-    }
-    @media(max-width:1180px) {
-      .cc-hero-inner { grid-template-columns:1.06fr .94fr; gap:18px; }
-      .cc-hero-title { font-size:clamp(36px,4vw,52px); }
-      .cc-hero-desc { font-size:15px; line-height:1.65; margin-bottom:24px; }
-      .cc-hero-form { max-width:100%; }
-      .cc-hero-right { height:450px; }
-      .cc-3d-scene { transform:scale(.84); transform-origin:center; }
-      .cc-hero-card { width:238px; padding:22px; }
-      .cc-hero-card-stat strong { font-size:18px; }
-    }
-    @media(max-width:1024px) {
-      .cc-hero-inner { grid-template-columns:1fr; }
+    /* ── RESPONSIVE ── */
+    @media (max-width:1024px) {
+      .cc-hero-content { grid-template-columns:1fr; }
       .cc-hero-right { display:none; }
-      .cc-features-grid,.cc-member-grid,.cc-how-steps,.cc-pricing-grid,.cc-test-grid { grid-template-columns:1fr; max-width:640px; margin-left:auto; margin-right:auto; }
-      .cc-member-photo-grid { grid-template-columns:repeat(2,1fr); }
-      .cc-gallery-benefits {
-        position:static; display:flex; flex-wrap:wrap; gap:10px;
-        margin:0 0 18px; pointer-events:auto;
+      .cc-features-grid, .cc-how-steps, .cc-pricing-grid, .cc-test-grid {
+        grid-template-columns:1fr; max-width:500px;
       }
-      .cc-gallery-benefit { position:static; animation:none; }
-      .cc-gallery-grid { grid-template-columns:1fr 1fr; }
-      .cc-gallery-item { aspect-ratio:1/1; }
       .cc-footer-grid { grid-template-columns:1fr 1fr; }
-      .cc-features,.cc-membership,.cc-how,.cc-pricing,.cc-testimonials,.cc-gallery,.cc-compare { padding-top:80px; padding-bottom:80px; }
     }
-    @media(max-width:768px) {
-      /* Nav */
-      .cc-nav { padding:12px 16px; }
+    @media (max-width:768px) {
+      .cc-nav { padding:14px 20px; }
       .cc-nav-links { display:none; }
-      .cc-nav-signin { display:none; }
-      .cc-hamburger { display:flex; }
-      .cc-logo { font-size:17px; }
-      .cc-logo svg { width:32px; height:32px; }
-      .cc-nav-quote { padding:10px 16px; font-size:13px; min-height:44px; display:inline-flex; align-items:center; }
-      /* Hero */
-      .cc-hero { padding:0 16px 48px; min-height:100svh; }
-      .cc-announce { padding-top:72px; }
-      .cc-announce-pill { margin-left:0; margin-right:0; font-size:12px; padding:10px 14px; flex-wrap:wrap; max-width:100%; }
-      .cc-announce-badge { font-size:10px; padding:2px 8px; }
-      .cc-hero-inner { padding-top:20px; gap:24px; }
-      .cc-hero-title { font-size:clamp(30px,8vw,42px); margin-bottom:16px; }
-      .cc-hero-desc { font-size:15px; margin-bottom:24px; max-width:100%; }
-      .cc-hero-form { flex-direction:column; max-width:100%; gap:12px; }
-      .cc-hero-input { padding:14px 18px; font-size:16px; min-height:48px; }
-      .cc-hero-btn { justify-content:center; padding:14px 24px; min-height:48px; font-size:15px; width:100%; }
-      /* Sections */
-      .cc-features,.cc-membership,.cc-how,.cc-pricing,.cc-testimonials,.cc-cta,.cc-footer,.cc-gallery,.cc-compare { padding-left:16px; padding-right:16px; }
-      .cc-features,.cc-membership,.cc-how,.cc-pricing,.cc-testimonials,.cc-gallery,.cc-compare { padding-top:56px; padding-bottom:56px; }
-      .cc-section-title { font-size:clamp(22px,6vw,32px); margin-bottom:12px; }
-      .cc-section-desc { font-size:15px; margin-bottom:40px; max-width:100%; }
-      .cc-container { padding-left:0; padding-right:0; }
-      .cc-section-head { margin-bottom:40px !important; }
-      /* Grids → single col */
-      .cc-features-grid,.cc-member-grid,.cc-how-steps,.cc-pricing-grid,.cc-test-grid { max-width:100%; margin-left:0; margin-right:0; }
-      .cc-member-actions .cc-price-cta { max-width:100% !important; }
-      /* Gallery */
-      .cc-gallery-grid { grid-template-columns:1fr; }
-      .cc-gallery-item { aspect-ratio:1/1; }
-      /* Compare */
-      .cc-compare-wrapper { margin-left:0; margin-right:0; }
-      /* CTA */
-      .cc-cta { padding:56px 16px; }
-      .cc-cta h2 { font-size:clamp(24px,6vw,34px); }
-      .cc-cta p { font-size:15px; margin-bottom:32px; max-width:100%; }
-      .cc-cta-form { flex-direction:column; max-width:100%; gap:12px; }
-      .cc-cta-form .cc-hero-input { width:100%; }
-      .cc-cta-form .cc-hero-btn { width:100%; justify-content:center; }
-      /* Cards */
-      .cc-feature-card { padding:24px 20px; }
-      .cc-feature-card h3 { font-size:16px; }
-      .cc-feature-card p { font-size:14px; }
-      .cc-step-num { width:56px; height:56px; font-size:20px; margin-bottom:16px; }
-      .cc-step h3 { font-size:18px; }
-      .cc-step p { font-size:14px; }
-      .cc-price-card { padding:28px 20px; }
-      .cc-price-card .cc-price { font-size:40px; }
-      .cc-price-cta { min-height:48px; padding:14px; }
-      .cc-test-card { padding:24px 20px; }
-      .cc-test-card blockquote { font-size:14px; }
-      /* Footer */
-      .cc-footer { padding:48px 16px 32px; }
-      .cc-footer-grid { grid-template-columns:1fr; gap:32px; margin-bottom:40px; }
-      .cc-footer-bottom { flex-direction:column; gap:12px; text-align:center; padding-top:24px; font-size:12px; }
-    }
-    @media(max-width:480px) {
-      .cc-nav { padding:10px 12px; }
-      .cc-logo { font-size:15px; gap:8px; }
-      .cc-logo svg { width:28px; height:28px; }
-      .cc-nav-quote { padding:8px 14px; font-size:12px; }
-      .cc-announce-pill { font-size:11px; padding:8px 12px; }
-      .cc-hero-title { font-size:clamp(26px,7.5vw,34px); }
-      .cc-hero-desc { font-size:14px; }
-      .cc-features,.cc-membership,.cc-how,.cc-pricing,.cc-testimonials,.cc-gallery,.cc-compare { padding-top:40px; padding-bottom:40px; }
-      .cc-section-title { font-size:clamp(20px,5.5vw,26px); }
-      .cc-section-desc { margin-bottom:28px; font-size:14px; }
-      .cc-compare-wrapper { border-radius:12px; min-height:auto; aspect-ratio:4/3; }
-      .cc-compare-label { font-size:10px; padding:6px 12px; top:12px; }
-      .cc-compare-label-before { left:12px; }
-      .cc-compare-label-after { right:12px; }
-      .cc-compare-handle::before { width:44px; height:44px; }
-      .cc-how-steps { gap:32px; }
-      .cc-member-photo-grid { grid-template-columns:1fr; }
-      .cc-pricing-grid { gap:20px; }
-      .cc-footer-brand p { font-size:13px; }
-      .cc-footer-col a { margin-bottom:10px; padding:4px 0; min-height:44px; display:flex; align-items:center; }
-      .cc-feature-card:hover { transform:none; }
-      .cc-price-card:hover { transform:none; }
-      .cc-test-card:hover { transform:none; }
-      .cc-gallery-benefit { font-size:11px; padding:8px 12px; }
+      .cc-menu-toggle { display: block; }
+      .cc-hero { padding:0 20px 60px; }
+      .cc-announce-inner { margin-left:20px; }
+      .cc-hero-form { flex-direction:column; }
+      .cc-features, .cc-how, .cc-pricing, .cc-testimonials, .cc-cta, .cc-footer {
+        padding-left:20px; padding-right:20px;
+      }
+      .cc-cta-form { flex-direction:column; }
+      .cc-footer-grid { grid-template-columns:1fr; }
+      .cc-footer-bottom { flex-direction:column; gap:12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ─── NAV ─── -->
-    <nav class="cc-nav" id="ccNav">
-    <a class="cc-logo" href="#">
-      <svg viewBox="0 0 36 36" fill="none">
-        <circle cx="18" cy="18" r="16.5" stroke="currentColor" stroke-width="2"/>
-        <rect x="16" y="4" width="4" height="18" rx="2" fill="currentColor" opacity=".85"/>
-        <ellipse cx="18" cy="26" rx="9" ry="4" stroke="currentColor" stroke-width="2" fill="none"/>
-        <path d="M12 25c1-2 3-3 6-3s5 1 6 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-        <circle cx="22" cy="8" r="1.5" fill="currentColor" opacity=".5"/>
-        <circle cx="13" cy="10" r="1" fill="currentColor" opacity=".4"/>
-        <circle cx="24" cy="13" r="1" fill="currentColor" opacity=".35"/>
-      </svg>
+  <!-- NAV -->
+  <nav class="cc-nav" id="ccNav">
+    <div class="cc-nav-logo">
+      <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2"/><path d="M9 15.5c1-4 3.5-6 5-6s2.5 1.5 2.5 3-1 3-2.5 3-2-1-2-2.5 1-3 2.5-3 3 1.5 4 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
       Cleaners Club
-    </a>
-    <div class="cc-nav-links">
-      <a href="#membership">Filiação</a>
-      <a href="#gallery">Profissionais em ação</a>
-      <a href="#services">Benefícios</a>
-      <a href="#pricing">Planos</a>
-      <a href="#reviews">Depoimentos</a>
     </div>
-    <div class="cc-nav-right">
-      <a class="cc-nav-signin" href="#">Área do Associado <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a class="cc-nav-quote" href="book.html">Quero me afiliar <svg width="12" height="12" fill="none" viewBox="0 0 12 12" style="vertical-align:middle;margin-left:2px"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <button class="cc-hamburger" id="ccHamburger" aria-label="Abrir menu" aria-expanded="false">
+    <div class="cc-nav-links">
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+    <div class="cc-nav-cta">
+      <a class="cc-nav-signin" href="#">Sign in <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="cc-nav-contact" href="#">Get a quote <svg width="12" height="12" fill="none" viewBox="0 0 12 12" style="vertical-align:middle;margin-left:2px"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="cc-menu-toggle" id="ccMenuToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- ─── MOBILE MENU ─── -->
-  <div class="cc-mobile-menu" id="ccMobileMenu">
-    <a href="#membership">Filiação</a>
-    <a href="#gallery">Profissionais em ação</a>
-    <a href="#services">Benefícios</a>
-    <a href="#pricing">Planos</a>
-    <a href="#reviews">Depoimentos</a>
-    <div class="cc-mm-divider"></div>
-    <a href="#">Área do Associado</a>
-    <a href="book.html" class="cc-mm-book">Quero me afiliar</a>
-  </div>
+  <!-- HERO -->
+  <section class="cc-hero">
+    <div class="cc-announce">
+      <div class="cc-announce-inner">
+        <span class="cc-announce-badge">New 2026</span>
+        Spring cleaning season &mdash; 20% off first booking
+        <svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M5.5 3l4 4-4 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
 
-  <!-- ─── HERO ─── -->
-    <section class="cc-hero">
-    <div class="cc-hero-inner">
+    <div class="cc-float-elem cc-bubble-1"></div>
+    <div class="cc-float-elem cc-bubble-2"></div>
+    <div class="cc-float-elem cc-sparkle cc-sparkle-1"></div>
+    <div class="cc-float-elem cc-sparkle cc-sparkle-2"></div>
+    <div class="cc-float-elem cc-sparkle cc-sparkle-3"></div>
+    <div class="cc-float-elem cc-sparkle cc-sparkle-4"></div>
+
+    <div class="cc-hero-content">
       <div class="cc-hero-left">
         <h1 class="cc-hero-title">
-          O clube que impulsiona<br><em>cleaners profissionais</em><br>no mercado
+          Professional cleaning
+          <span class="cc-highlight">to elevate your</span>
+          home
         </h1>
         <p class="cc-hero-desc">
-          O Cleaners Club é uma associação para profissionais da limpeza que querem crescer com método, reputação e rede de apoio. Aqui você se afilia, recebe oportunidades e fortalece sua carreira junto a outros especialistas.
+          Join thousands of homeowners who trust Cleaners Club to keep their spaces spotless. Book vetted professionals, enjoy flexible scheduling, and come home to perfection.
         </p>
-        <div class="cc-hero-form cc-hero-form-single">
-          <a href="book.html" class="cc-hero-btn">Inscreva-se agora <svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
+        <form class="cc-hero-form" onsubmit="return false;">
+          <input class="cc-hero-input" type="email" placeholder="Email address">
+          <button class="cc-hero-btn" type="submit">
+            Book now
+            <svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
       </div>
 
       <div class="cc-hero-right">
-        <div class="cc-3d-scene">
-          <div class="cc-3d-elem cc-elem-spray">
-            <img src="https://images.unsplash.com/photo-1764344815057-15a438b636ed?w=420&h=420&fit=crop&q=80&auto=format" alt="Borrifador profissional de limpeza">
+        <div class="cc-float-card cc-card-booking">
+          <div class="cc-card-booking-icon">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M14 3v4M8 7l2 3M20 7l-2 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/><rect x="5" y="12" width="18" height="12" rx="3" stroke="#fff" stroke-width="2"/><path d="M10 17h8M10 20h5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <div class="cc-3d-elem cc-elem-mop">
-            <img src="https://images.unsplash.com/photo-1758273238415-01ec03d9ef27?w=420&h=520&fit=crop&q=80&auto=format" alt="Esfregão em uso residencial">
+          <h4>Deep Clean Package</h4>
+          <p>Starting at $120/session</p>
+          <button class="cc-card-booking-btn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v3M5 3l1.5 2M11 3l-1.5 2M3 7h10v6a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Book Instantly
+          </button>
+          <div class="cc-card-booking-sep">Or customize your clean</div>
+          <div class="cc-card-booking-fields">
+            <div class="cc-card-booking-field">Bedrooms <span>3</span></div>
+            <div class="cc-card-booking-field">Bathrooms <span>2</span></div>
+            <div class="cc-card-booking-field">Date <span>Mar 15</span></div>
           </div>
-          <div class="cc-3d-elem cc-elem-broom">
-            <img src="https://images.unsplash.com/photo-1612152592159-fd39aa485562?w=420&h=560&fit=crop&q=80&auto=format" alt="Profissional com vassoura">
-          </div>
-          <div class="cc-3d-elem cc-elem-bucket">
-            <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=420&h=420&fit=crop&q=80&auto=format" alt="Balde e materiais de limpeza">
-          </div>
-          <div class="cc-3d-elem cc-elem-gloves">
-            <img src="https://images.unsplash.com/photo-1758272421995-e993f97fae22?w=420&h=420&fit=crop&q=80&auto=format" alt="Profissional usando luvas de limpeza">
-          </div>
+        </div>
 
-          <div class="cc-bubble cc-bubble-1"></div>
-          <div class="cc-bubble cc-bubble-2"></div>
-          <div class="cc-bubble cc-bubble-3"></div>
-          <div class="cc-bubble cc-bubble-4"></div>
-          <div class="cc-bubble cc-bubble-5"></div>
-          <div class="cc-bubble cc-bubble-6"></div>
+        <div class="cc-float-card cc-card-stats">
+          <div class="cc-card-stats-header">
+            <h4>Homes Cleaned</h4>
+            <span>This Month</span>
+          </div>
+          <div class="cc-stats-amount">2,847 <span class="cc-stats-badge">+18.4%</span></div>
+          <div class="cc-stats-sub">vs. 2,404 last month</div>
+          <div class="cc-stats-graph">
+            <svg viewBox="0 0 220 70" fill="none">
+              <defs>
+                <linearGradient id="ccGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#635bff" stop-opacity=".3"/>
+                  <stop offset="100%" stop-color="#635bff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0 60 Q20 55 40 50 T80 35 T120 28 T160 15 T200 10 L220 8 L220 70 L0 70Z" fill="url(#ccGrad)"/>
+              <path d="M0 60 Q20 55 40 50 T80 35 T120 28 T160 15 T200 10 L220 8" stroke="#635bff" stroke-width="2.5" fill="none" stroke-linecap="round"
+                style="stroke-dasharray:350;stroke-dashoffset:350;animation:ccDrawLine 2s ease-out 1s forwards"/>
+              <circle cx="220" cy="8" r="4" fill="#635bff" opacity="0" style="animation:ccTwinkle 2s ease-out 2.8s forwards"/>
+            </svg>
+          </div>
+        </div>
 
-          <div class="cc-hero-card">
-            <div class="cc-hero-card-icon">
-              <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3v6M9 6l4-3 4 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/><rect x="4" y="11" width="18" height="11" rx="3" stroke="#fff" stroke-width="2"/><path d="M10 15.5h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+        <div class="cc-float-card cc-card-review">
+          <div class="cc-card-review-top">
+            <div class="cc-card-review-avatar">S</div>
+            <div class="cc-card-review-info">
+              <h5>Sarah Mitchell</h5>
+              <span>Verified Customer</span>
             </div>
-            <h4>Filiação Cleaners Club</h4>
-            <p>A partir de R$39/mês</p>
-            <a href="book.html" class="cc-hero-card-btn">Iniciar Filiação</a>
-            <div class="cc-hero-card-stats">
-              <div class="cc-hero-card-stat"><strong>3.218</strong><span>Associados ativos</span></div>
-              <div class="cc-hero-card-stat"><strong>4,96</strong><span>Nota da comunidade</span></div>
-            </div>
           </div>
+          <div class="cc-card-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&ldquo;Absolutely transformative. My apartment has never looked this good. The team was thorough, polite, and incredibly efficient.&rdquo;</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── GALLERY ─── -->
-    <section class="cc-gallery" id="gallery">
+  <!-- FEATURES -->
+  <section class="cc-features" id="services">
     <div class="cc-container">
-      <div class="cc-section-label">Profissionais em ação</div>
-      <h2 class="cc-section-title">Cleaners afiliados cuidando de lares reais</h2>
-      <p class="cc-section-desc">Conheça o padrão de execução da nossa comunidade: técnicas consistentes, atenção aos detalhes e cuidado com cada ambiente.</p>
-      <div class="cc-gallery-stage">
-        <div class="cc-gallery-benefits">
-          <a href="#services" class="cc-gallery-benefit cc-benefit-1">Cleaners verificados</a>
-          <a href="#services" class="cc-gallery-benefit cc-benefit-2">Treinamento contínuo</a>
-          <a href="#services" class="cc-gallery-benefit cc-benefit-3">Comunidade ativa</a>
-          <a href="#services" class="cc-gallery-benefit cc-benefit-4">Padrão de qualidade</a>
-        </div>
-        <div class="cc-gallery-grid">
-          <div class="cc-gallery-item" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1758523670739-0d26a3ee976d?w=800&h=1000&fit=crop&q=80&auto=format" alt="Profissional aspirando sala de estar" loading="lazy">
-            <div class="cc-gallery-overlay"><span>Aspiração e acabamento</span></div>
-          </div>
-          <div class="cc-gallery-item" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1758273238415-01ec03d9ef27?w=600&h=450&fit=crop&q=80&auto=format" alt="Cleaner passando esfregão em piso" loading="lazy">
-            <div class="cc-gallery-overlay"><span>Limpeza de piso</span></div>
-          </div>
-          <div class="cc-gallery-item" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1758272421751-963195322eaa?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional limpando móveis com luvas" loading="lazy">
-            <div class="cc-gallery-overlay"><span>Detalhamento de móveis</span></div>
-          </div>
-          <div class="cc-gallery-item" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1765970101844-67efbb2de141?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional ajustando equipamento de limpeza" loading="lazy">
-            <div class="cc-gallery-overlay"><span>Equipamento profissional</span></div>
-          </div>
-          <div class="cc-gallery-item" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1758272421995-e993f97fae22?w=600&h=450&fit=crop&q=80&auto=format" alt="Cleaner com EPI realizando limpeza" loading="lazy">
-            <div class="cc-gallery-overlay"><span>Padrão e segurança</span></div>
-          </div>
-          <div class="cc-gallery-item" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional higienizando bancada de cozinha" loading="lazy">
-            <div class="cc-gallery-overlay"><span>Higienização de cozinha</span></div>
-          </div>
-          <div class="cc-gallery-item" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional limpando vidro e superfícies" loading="lazy">
-            <div class="cc-gallery-overlay"><span>Vidros e superfícies</span></div>
-          </div>
-          <div class="cc-gallery-item" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1612152592159-fd39aa485562?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional com vassoura em serviço" loading="lazy">
-            <div class="cc-gallery-overlay"><span>Desinfecção técnica</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── BEFORE / AFTER ─── -->
-    <section class="cc-compare" id="compare">
-    <div class="cc-container">
-      <div style="text-align:center; margin-bottom:64px;" class="cc-section-head">
-        <div class="cc-section-label">Resultado de Campo</div>
-        <h2 class="cc-section-title">Arraste para ver o padrão dos associados</h2>
-        <p class="cc-section-desc" style="margin-left:auto;margin-right:auto;">
-          Compare o antes e depois para visualizar como os profissionais afiliados ao Cleaners Club executam limpezas com consistência e acabamento técnico.
-        </p>
-      </div>
-      <div class="cc-compare-wrapper" id="ccCompare">
-        <div class="cc-compare-layer cc-compare-before">
-          <img src="compare-before.jpg" alt="Sala antes da limpeza profissional">
-        </div>
-        <div class="cc-compare-layer cc-compare-after" id="ccCompareAfter">
-          <img src="compare-after.jpg" alt="Sala após limpeza profissional">
-        </div>
-        <div class="cc-compare-handle" id="ccCompareHandle">
-          <div class="cc-compare-handle-arrows">
-            <svg viewBox="0 0 18 18" fill="none"><path d="M11 4l-5 5 5 5" stroke="#635bff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <svg viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="#635bff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-        <span class="cc-compare-label cc-compare-label-before">ANTES</span>
-        <span class="cc-compare-label cc-compare-label-after">DEPOIS</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── FEATURES ─── -->
-    <section class="cc-features" id="services">
-    <div class="cc-container">
-      <div class="cc-section-label">Benefícios do Clube</div>
-      <h2 class="cc-section-title">Estrutura completa para<br>profissionais da limpeza</h2>
-      <p class="cc-section-desc">A associação foi desenhada para cleaners autônomos e equipes que querem aumentar renda, reputação e previsibilidade com apoio contínuo.</p>
+      <div class="cc-section-label">Why Cleaners Club</div>
+      <h2 class="cc-section-title">Everything you need for<br>a spotless home</h2>
+      <p class="cc-section-desc">
+        We handle the scrubbing so you can focus on living. Our services are designed to fit your lifestyle, your schedule, and your standards.
+      </p>
       <div class="cc-features-grid">
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#e6f9ed,#c1f0d4)">
             <svg viewBox="0 0 26 26" fill="none"><path d="M13 3v6M9 6l4-3 4 3" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="11" width="18" height="11" rx="3" stroke="#1ea672" stroke-width="2"/><path d="M10 15.5h6" stroke="#1ea672" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <h3>Capacitação Contínua</h3>
-          <p>Treinamentos de técnica, produtividade e atendimento para elevar o padrão profissional dos associados.</p>
+          <h3>Deep Cleaning</h3>
+          <p>Our signature top-to-bottom deep clean reaches every corner, crevice, and surface your home has been hiding from.</p>
         </div>
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">
             <svg viewBox="0 0 26 26" fill="none"><path d="M4 20l4-8 4 5 4-9 6 12" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="6" r="3" stroke="#7c3aed" stroke-width="2"/></svg>
           </div>
-          <h3>Oportunidades Recorrentes</h3>
-          <p>Receba indicações de serviços residenciais e comerciais conforme sua disponibilidade e especialidade.</p>
+          <h3>Recurring Plans</h3>
+          <p>Set it and forget it. Weekly, bi-weekly, or monthly plans that keep your home consistently immaculate.</p>
         </div>
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2)">
             <svg viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9" stroke="#f57c00" stroke-width="2"/><path d="M13 8v5l3.5 3.5" stroke="#f57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Agenda Organizada</h3>
-          <p>Centralize solicitações, recorrências e confirmações para manter sua rotina de trabalho sob controle.</p>
+          <h3>Same-Day Booking</h3>
+          <p>Need it cleaned today? Our on-demand service connects you with available professionals within hours.</p>
         </div>
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">
             <svg viewBox="0 0 26 26" fill="none"><path d="M13 3l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z" stroke="#0284c7" stroke-width="2" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Selo Profissional Verificado</h3>
-          <p>Perfis com validação de documentação, experiência e avaliações reais para transmitir confiança imediata.</p>
+          <h3>Vetted Professionals</h3>
+          <p>Every cleaner is background-checked, trained, and rated by real customers. Your trust and safety come first.</p>
         </div>
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
             <svg viewBox="0 0 26 26" fill="none"><path d="M6 13a7 7 0 1 1 14 0" stroke="#e91e63" stroke-width="2" stroke-linecap="round"/><path d="M10 13v6a3 3 0 0 0 6 0v-6" stroke="#e91e63" stroke-width="2" stroke-linecap="round"/><circle cx="13" cy="9" r="2" stroke="#e91e63" stroke-width="2"/></svg>
           </div>
-          <h3>Comunidade Ativa</h3>
-          <p>Troca de experiências, suporte entre pares e networking para crescer junto com outros cleaners.</p>
+          <h3>Eco-Friendly Products</h3>
+          <p>We use non-toxic, biodegradable cleaning products that are safe for your family, pets, and the planet.</p>
         </div>
         <div class="cc-feature-card" data-cc-anim>
           <div class="cc-feature-icon" style="background:linear-gradient(135deg,#e8eaf6,#c5cae9)">
             <svg viewBox="0 0 26 26" fill="none"><rect x="4" y="4" width="18" height="18" rx="4" stroke="#3949ab" stroke-width="2"/><path d="M9 13l3 3 5-6" stroke="#3949ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Parcerias e Descontos</h3>
-          <p>Acesso a preços especiais em produtos, equipamentos e serviços que ajudam a reduzir seu custo operacional.</p>
+          <h3>Satisfaction Guarantee</h3>
+          <p>Not 100% happy? We&rsquo;ll re-clean for free within 24 hours. Your satisfaction is our only metric.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── MEMBERSHIP + HOW IT WORKS ─── -->
-    <section class="cc-membership" id="membership">
-    <div class="cc-container">
-      <div class="cc-member-grid">
-        <div>
-          <div class="cc-section-label">Filiação</div>
-          <h2 class="cc-section-title">Associe-se em poucos passos e eleve seu nível</h2>
-          <p class="cc-section-desc" style="margin-bottom:32px;">A filiação no Cleaners Club foi pensada para profissionais independentes e equipes de limpeza que querem escalar com estrutura e credibilidade.</p>
-
-          <div class="cc-member-cards">
-            <article class="cc-member-card" data-cc-anim>
-              <span class="cc-member-tag">Passo 1</span>
-              <h3>Cadastro Profissional</h3>
-              <p>Preencha seu perfil com experiência, região de atendimento, tipo de serviço e disponibilidade.</p>
-            </article>
-            <article class="cc-member-card" data-cc-anim>
-              <span class="cc-member-tag">Passo 2</span>
-              <h3>Validação e Boas Práticas</h3>
-              <p>Nossa equipe valida os dados e libera um onboarding com padrões técnicos e de atendimento do clube.</p>
-            </article>
-            <article class="cc-member-card" data-cc-anim>
-              <span class="cc-member-tag">Passo 3</span>
-              <h3>Ativação de Benefícios</h3>
-              <p>Com a filiação ativa, você entra na rede de oportunidades, recebe suporte e utiliza os recursos exclusivos.</p>
-            </article>
-          </div>
-
-          <div class="cc-member-actions">
-            <a href="book.html" class="cc-price-cta cc-price-cta-primary" style="max-width:220px;">Iniciar Filiação</a>
-            <a href="#pricing" class="cc-price-cta cc-price-cta-secondary" style="max-width:220px;">Ver Planos</a>
-          </div>
-        </div>
-
-        <div class="cc-member-photo-grid">
-          <div class="cc-member-photo" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1758523670739-0d26a3ee976d?w=700&h=900&fit=crop&q=80&auto=format" alt="Profissional limpando sala com aspirador" loading="lazy">
-          </div>
-          <div class="cc-member-photo" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1758273238415-01ec03d9ef27?w=700&h=900&fit=crop&q=80&auto=format" alt="Cleaner executando limpeza de piso" loading="lazy">
-          </div>
-          <div class="cc-member-photo" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1758272421751-963195322eaa?w=700&h=900&fit=crop&q=80&auto=format" alt="Profissional detalhando estante" loading="lazy">
-          </div>
-          <div class="cc-member-photo" data-cc-anim>
-            <img src="https://images.unsplash.com/photo-1765970101844-67efbb2de141?w=700&h=900&fit=crop&q=80&auto=format" alt="Limpeza técnica com equipamento" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- HOW IT WORKS -->
   <section class="cc-how" id="how">
     <div class="cc-container">
-      <div class="cc-section-label">Como funciona no dia a dia</div>
-      <h2 class="cc-section-title">Do cadastro ao serviço em 3 passos</h2>
-      <p class="cc-section-desc">Fluxo simples para profissionais entrarem na associação e começarem a operar com padrão de clube.</p>
+      <div class="cc-section-label">How It Works</div>
+      <h2 class="cc-section-title">Sparkling clean in 3 simple steps</h2>
+      <p class="cc-section-desc">
+        From booking to a freshly cleaned home, the entire process takes less than a minute to set up.
+      </p>
       <div class="cc-how-steps">
         <div class="cc-step" data-cc-anim>
           <div class="cc-step-num">1</div>
-          <h3>Defina seu perfil</h3>
-          <p>Informe tipos de limpeza, bairros atendidos e horários disponíveis para recomendação assertiva.</p>
+          <h3>Choose Your Service</h3>
+          <p>Pick from deep clean, standard, move-in/out, or customize your own package to match your needs.</p>
         </div>
         <div class="cc-step" data-cc-anim>
           <div class="cc-step-num">2</div>
-          <h3>Receba oportunidades</h3>
-          <p>Tenha acesso a demandas da rede, propostas de recorrência e clientes alinhados ao seu escopo.</p>
+          <h3>Pick a Date &amp; Time</h3>
+          <p>Select a slot that works for you. We offer flexible scheduling including weekends and evenings.</p>
         </div>
         <div class="cc-step" data-cc-anim>
           <div class="cc-step-num">3</div>
-          <h3>Cresça com avaliação</h3>
-          <p>Consolide sua reputação com feedback real, suporte da comunidade e evolução contínua.</p>
+          <h3>Relax &amp; Enjoy</h3>
+          <p>Our vetted professional arrives on time and transforms your space. Come home to perfection.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── PRICING ─── -->
-    <section class="cc-pricing" id="pricing">
+  <!-- PRICING -->
+  <section class="cc-pricing" id="pricing">
     <div class="cc-container">
-      <div style="text-align:center;margin-bottom:64px;" class="cc-section-head">
-        <div class="cc-section-label">Planos de Filiação</div>
-        <h2 class="cc-section-title">Planos claros para cada fase da carreira</h2>
-        <p class="cc-section-desc" style="margin-left:auto;margin-right:auto;">Escolha o nível de filiação que combina com sua operação. Sem taxa de entrada e com upgrade quando quiser.</p>
+      <div style="text-align:center; margin-bottom:64px;">
+        <div class="cc-section-label">Pricing</div>
+        <h2 class="cc-section-title">Simple, transparent pricing</h2>
+        <p class="cc-section-desc" style="margin-left:auto; margin-right:auto;">
+          No hidden fees, no surprise charges. Pick the plan that fits your home and budget.
+        </p>
       </div>
       <div class="cc-pricing-grid">
         <div class="cc-price-card" data-cc-anim>
-          <h3>Membro Essencial</h3>
-          <div class="cc-price">R$39<span>/mês</span></div>
-          <div class="cc-price-desc">Para iniciar no clube com base sólida</div>
+          <h3>Standard Clean</h3>
+          <div class="cc-price">$89<span>/visit</span></div>
+          <div class="cc-price-desc">Perfect for regular maintenance</div>
           <ul class="cc-price-features">
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Perfil profissional validado</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Acesso à comunidade privada</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Materiais de boas práticas</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Suporte por e-mail</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> All rooms dusted &amp; vacuumed</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Kitchen &amp; bathroom sanitized</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Floors mopped &amp; polished</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Up to 2 bedrooms</li>
           </ul>
-          <a href="book.html" class="cc-price-cta cc-price-cta-secondary">Começar</a>
+          <button class="cc-price-cta cc-price-cta-secondary">Get started</button>
         </div>
         <div class="cc-price-card cc-popular" data-cc-anim>
-          <div class="cc-popular-badge">Mais escolhido</div>
-          <h3>Membro Pro</h3>
-          <div class="cc-price">R$89<span>/mês</span></div>
-          <div class="cc-price-desc">Equilíbrio entre visibilidade e suporte</div>
+          <div class="cc-popular-badge">Most Popular</div>
+          <h3>Deep Clean</h3>
+          <div class="cc-price">$149<span>/visit</span></div>
+          <div class="cc-price-desc">Our most comprehensive package</div>
           <ul class="cc-price-features">
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tudo do Essencial</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Prioridade em oportunidades</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Selo Cleaners Club Pro</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Mentorias mensais em grupo</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Descontos em fornecedores</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Everything in Standard</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Inside cabinets &amp; appliances</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Window sills &amp; baseboards</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Up to 4 bedrooms</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Eco-friendly products</li>
           </ul>
-          <a href="book.html" class="cc-price-cta cc-price-cta-primary">Começar</a>
+          <button class="cc-price-cta cc-price-cta-primary">Get started</button>
         </div>
         <div class="cc-price-card" data-cc-anim>
-          <h3>Equipe Parceira</h3>
-          <div class="cc-price">R$179<span>/mês</span></div>
-          <div class="cc-price-desc">Para equipes e pequenos negócios</div>
+          <h3>Move In/Out</h3>
+          <div class="cc-price">$249<span>/visit</span></div>
+          <div class="cc-price-desc">For new beginnings or fresh starts</div>
           <ul class="cc-price-features">
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tudo do Membro Pro</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Até 5 perfis vinculados</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Painel de desempenho da equipe</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Atendimento prioritário</li>
-            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Suporte de expansão comercial</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Everything in Deep Clean</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Wall spot cleaning</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Garage &amp; storage areas</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited rooms</li>
+            <li><svg viewBox="0 0 18 18" fill="none"><path d="M4 9l4 4 6-7" stroke="#1ea672" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority scheduling</li>
           </ul>
-          <a href="book.html" class="cc-price-cta cc-price-cta-secondary">Começar</a>
+          <button class="cc-price-cta cc-price-cta-secondary">Get started</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── TESTIMONIALS ─── -->
-    <section class="cc-testimonials" id="reviews">
+  <!-- TESTIMONIALS -->
+  <section class="cc-testimonials" id="reviews">
     <div class="cc-container">
-      <div style="text-align:center;margin-bottom:64px;" class="cc-section-head">
-        <div class="cc-section-label">Depoimentos</div>
-        <h2 class="cc-section-title">Profissionais e contratantes confiam no clube</h2>
-        <p class="cc-section-desc" style="margin-left:auto;margin-right:auto;">Relatos de quem vive o Cleaners Club na prática: mais organização, mais clientes e mais padrão de entrega.</p>
+      <div style="text-align:center; margin-bottom:64px;">
+        <div class="cc-section-label">Testimonials</div>
+        <h2 class="cc-section-title">Loved by homeowners everywhere</h2>
+        <p class="cc-section-desc" style="margin-left:auto; margin-right:auto;">
+          Real stories from real customers who transformed their homes with Cleaners Club.
+        </p>
       </div>
       <div class="cc-test-grid">
         <div class="cc-test-card" data-cc-anim>
           <div class="cc-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>"Depois que me afiliei ao Cleaners Club, saí do improviso. Hoje tenho agenda organizada, clientes recorrentes e uma rede que realmente ajuda."</blockquote>
+          <blockquote>&ldquo;I&rsquo;ve tried many cleaning services, but Cleaners Club is on another level. Consistent, reliable, and my home smells amazing every time.&rdquo;</blockquote>
           <div class="cc-test-author">
-            <div class="cc-test-avatar" style="background:linear-gradient(135deg,#635bff,#a259ff)">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&q=80" alt="Carlos">
-            </div>
-            <div><h5>Carlos Menezes</h5><span>Cleaner afiliado · Plano Pro</span></div>
+            <div class="cc-test-avatar" style="background:linear-gradient(135deg,#635bff,#a259ff)">J</div>
+            <div><h5>James Cooper</h5><span>Weekly subscriber</span></div>
           </div>
         </div>
         <div class="cc-test-card" data-cc-anim>
           <div class="cc-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>"Contratamos apenas profissionais da associação e o padrão mudou completamente. Mais confiança, pontualidade e acabamento impecável."</blockquote>
+          <blockquote>&ldquo;Booked a move-out clean and got my entire deposit back. The team was meticulous and so professional. Can&rsquo;t recommend enough!&rdquo;</blockquote>
           <div class="cc-test-author">
-            <div class="cc-test-avatar" style="background:linear-gradient(135deg,#f9a825,#f4724e)">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&q=80" alt="Fernanda">
-            </div>
-            <div><h5>Fernanda Lima</h5><span>Síndica e contratante recorrente</span></div>
+            <div class="cc-test-avatar" style="background:linear-gradient(135deg,#f9a825,#f4724e)">A</div>
+            <div><h5>Amanda Chen</h5><span>Move-out clean</span></div>
           </div>
         </div>
         <div class="cc-test-card" data-cc-anim>
           <div class="cc-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>"Nosso time entrou como Equipe Parceira e ganhou processo. As mentorias e o suporte comercial fizeram diferença no faturamento."</blockquote>
+          <blockquote>&ldquo;As a busy parent, this service is a lifesaver. The eco-friendly products give me peace of mind with kids and pets around.&rdquo;</blockquote>
           <div class="cc-test-author">
-            <div class="cc-test-avatar" style="background:linear-gradient(135deg,#1ea672,#34d399)">
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&q=80" alt="Patrícia">
-            </div>
-            <div><h5>Patrícia Souza</h5><span>Líder de equipe afiliada</span></div>
+            <div class="cc-test-avatar" style="background:linear-gradient(135deg,#1ea672,#34d399)">R</div>
+            <div><h5>Rachel Torres</h5><span>Bi-weekly plan</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── CTA ─── -->
-    <section class="cc-cta">
+  <!-- CTA -->
+  <section class="cc-cta">
     <div class="cc-cta-content">
-      <h2>Pronto para entrar no Cleaners Club?</h2>
-      <p>Afiliando-se hoje, você passa a fazer parte de uma associação com método, oportunidades e comunidade ativa de profissionais da limpeza.</p>
-      <div class="cc-cta-form">
-        <input class="cc-hero-input" type="email" placeholder="Endereço de e-mail profissional">
-        <a href="book.html" class="cc-hero-btn">Quero me afiliar <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
+      <h2>Ready for a cleaner home?</h2>
+      <p>Start with your first clean today and discover why thousands of homeowners chose Cleaners Club.</p>
+      <form class="cc-cta-form" onsubmit="return false;">
+        <input class="cc-hero-input" type="email" placeholder="Email address">
+        <button class="cc-hero-btn" type="submit">
+          Book now
+          <svg viewBox="0 0 16 16" fill="none" width="16" height="16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
     </div>
   </section>
 
-  <!-- ─── FOOTER ─── -->
-    <footer class="cc-footer">
+  <!-- FOOTER -->
+  <footer class="cc-footer">
     <div class="cc-footer-grid">
       <div class="cc-footer-brand">
-        <a class="cc-logo" href="#">
-          <svg viewBox="0 0 36 36" fill="none" width="36" height="36"><circle cx="18" cy="18" r="16.5" stroke="currentColor" stroke-width="2"/><rect x="16" y="4" width="4" height="18" rx="2" fill="currentColor" opacity=".85"/><ellipse cx="18" cy="26" rx="9" ry="4" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 25c1-2 3-3 6-3s5 1 6 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="8" r="1.5" fill="currentColor" opacity=".5"/><circle cx="13" cy="10" r="1" fill="currentColor" opacity=".4"/></svg>
+        <div class="cc-nav-logo">
+          <svg viewBox="0 0 28 28" fill="none" width="28" height="28"><circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="2"/><path d="M9 15.5c1-4 3.5-6 5-6s2.5 1.5 2.5 3-1 3-2.5 3-2-1-2-2.5 1-3 2.5-3 3 1.5 4 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
           Cleaners Club
-        </a>
-        <p>Associação de profissionais da limpeza focada em capacitação, oportunidades e reputação de mercado desde 2024.</p>
+        </div>
+        <p>Professional home cleaning services trusted by thousands of homeowners. Making homes sparkle since 2024.</p>
       </div>
       <div class="cc-footer-col">
-        <h4>Filiação</h4>
-        <a href="#membership">Como se afiliar</a><a href="#pricing">Planos</a><a href="#services">Benefícios</a><a href="#reviews">Depoimentos</a>
+        <h4>Services</h4>
+        <a href="#">Standard Clean</a>
+        <a href="#">Deep Clean</a>
+        <a href="#">Move In/Out</a>
+        <a href="#">Office Cleaning</a>
+        <a href="#">Carpet Cleaning</a>
       </div>
       <div class="cc-footer-col">
-        <h4>Profissionais</h4>
-        <a href="#">Área do Associado</a><a href="#">Treinamentos</a><a href="#">Comunidade</a><a href="#">Central de Suporte</a>
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+        <a href="#">Press</a>
       </div>
       <div class="cc-footer-col">
-        <h4>Contratantes</h4>
-        <a href="#gallery">Ver profissionais</a><a href="#compare">Antes e Depois</a><a href="#">Qualidade e Segurança</a><a href="#">Empresas Parceiras</a>
+        <h4>Resources</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Cleaning Tips</a>
+        <a href="#">Service Areas</a>
+        <a href="#">Partners</a>
       </div>
       <div class="cc-footer-col">
         <h4>Legal</h4>
-        <a href="#">Política de Privacidade</a><a href="#">Termos de Associação</a><a href="#">Política de Cookies</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
       </div>
     </div>
     <div class="cc-footer-bottom">
-      <span>© 2026 Cleaners Club. Todos os direitos reservados.</span>
-      <span>Construindo um mercado mais forte para profissionais da limpeza.</span>
+      <span>&copy; 2026 Cleaners Club. All rights reserved.</span>
+      <span>Made with care, just like our cleans.</span>
     </div>
   </footer>
 
   <script>
     (function() {
-      /* Nav scroll */
       var nav = document.getElementById('ccNav');
       window.addEventListener('scroll', function() {
         nav.classList.toggle('scrolled', window.scrollY > 40);
       });
 
-      /* Scroll reveal */
       var animEls = document.querySelectorAll('[data-cc-anim]');
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -1164,104 +859,17 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.12 });
+      }, { threshold: 0.15 });
       animEls.forEach(function(el) { observer.observe(el); });
 
-      /* Smooth scroll */
       document.querySelectorAll('a[href^="#"]').forEach(function(a) {
         a.addEventListener('click', function(e) {
           e.preventDefault();
-          var t = document.querySelector(a.getAttribute('href'));
-          if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          var target = document.querySelector(a.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       });
-
-      /* ── Before/After Slider ── */
-      var compare = document.getElementById('ccCompare');
-      var handle = document.getElementById('ccCompareHandle');
-      var afterLayer = document.getElementById('ccCompareAfter');
-      var dragging = false;
-
-      function updateSlider(x) {
-        var rect = compare.getBoundingClientRect();
-        var pos = Math.max(0, Math.min(x - rect.left, rect.width));
-        var pct = (pos / rect.width) * 100;
-        handle.style.left = pct + '%';
-        afterLayer.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
-      }
-
-      compare.addEventListener('mousedown', function(e) { dragging = true; updateSlider(e.clientX); });
-      window.addEventListener('mousemove', function(e) { if (dragging) { e.preventDefault(); updateSlider(e.clientX); } });
-      window.addEventListener('mouseup', function() { dragging = false; });
-
-      compare.addEventListener('touchstart', function(e) { dragging = true; updateSlider(e.touches[0].clientX); }, { passive: true });
-      window.addEventListener('touchmove', function(e) { if (dragging) updateSlider(e.touches[0].clientX); }, { passive: true });
-      window.addEventListener('touchend', function() { dragging = false; });
-
-      /* ── Hamburger / Mobile menu ── */
-      var hamburger = document.getElementById('ccHamburger');
-      var mobileMenu = document.getElementById('ccMobileMenu');
-      function closeMobileMenu() {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
-        hamburger.setAttribute('aria-expanded', 'false');
-      }
-      hamburger.addEventListener('click', function() {
-        var open = mobileMenu.classList.toggle('active');
-        hamburger.classList.toggle('active');
-        document.body.style.overflow = open ? 'hidden' : '';
-        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      mobileMenu.querySelectorAll('a').forEach(function(a) {
-        a.addEventListener('click', closeMobileMenu);
-      });
-
-      /* ── Hero parallax on mouse ── */
-      var heroRight = document.querySelector('.cc-hero-right');
-      if (heroRight) {
-        var heroSection = document.querySelector('.cc-hero');
-        heroSection.addEventListener('mousemove', function(e) {
-          var rect = this.getBoundingClientRect();
-          var x = (e.clientX - rect.left) / rect.width - 0.5;
-          var y = (e.clientY - rect.top) / rect.height - 0.5;
-          var elems = heroRight.querySelectorAll('.cc-3d-elem');
-          elems.forEach(function(el, i) {
-            var depth = 0.6 + (i * 0.35);
-            el.style.transform =
-              'translate(' + (x * 12 * depth) + 'px, ' + (y * 8 * depth) + 'px) ' +
-              'rotateX(' + (y * -6) + 'deg) rotateY(' + (x * 10) + 'deg)';
-          });
-          var card = heroRight.querySelector('.cc-hero-card');
-          if (card) {
-            card.style.transform =
-              'translate(calc(-50% + ' + (x * 6) + 'px), calc(-50% + ' + (y * 4) + 'px))';
-          }
-        });
-        heroSection.addEventListener('mouseleave', function() {
-          var elems = heroRight.querySelectorAll('.cc-3d-elem');
-          elems.forEach(function(el) { el.style.transform = ''; });
-          var card = heroRight.querySelector('.cc-hero-card');
-          if (card) card.style.transform = 'translate(-50%, -50%)';
-        });
-      }
     })();
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
