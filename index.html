@@ -150,7 +150,7 @@
       filter:drop-shadow(0 16px 32px rgba(0,0,0,.25));
     }
 
-        .cc-elem-mop {
+    .cc-elem-mop {
       top:-5%; right:2%; width:140px; height:180px;
       animation:cc3dFloat2 8s ease-in-out infinite;
     }
@@ -237,6 +237,27 @@
 
     /* ─── GALLERY: CLEAN HOMES ─── */
     .cc-gallery { background:#fff; padding:120px 48px; overflow:hidden; }
+    .cc-gallery-stage { position:relative; }
+    .cc-gallery-benefits {
+      position:absolute; inset:0; z-index:6; pointer-events:none;
+    }
+    .cc-gallery-benefit {
+      position:absolute; display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:999px; border:1px solid rgba(99,91,255,.18);
+      background:rgba(255,255,255,.93); color:#0a2540; font-size:12px; font-weight:700;
+      letter-spacing:.3px; box-shadow:0 10px 26px rgba(10,37,64,.12);
+      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+      pointer-events:auto; animation:ccBenefitFloat 5s ease-in-out infinite;
+    }
+    .cc-gallery-benefit::before {
+      content:''; width:8px; height:8px; border-radius:50%;
+      background:linear-gradient(135deg,#635bff,#8b7dff); flex-shrink:0;
+      box-shadow:0 0 0 4px rgba(99,91,255,.12);
+    }
+    .cc-benefit-1 { top:14px; right:18px; animation-delay:0s; }
+    .cc-benefit-2 { top:42%; right:14px; animation-delay:.5s; }
+    .cc-benefit-3 { bottom:18px; left:20%; animation-delay:1s; }
+    .cc-benefit-4 { bottom:10px; right:26%; animation-delay:1.5s; }
     .cc-gallery-grid {
       display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
     }
@@ -524,6 +545,10 @@
       0%,100% { transform:translateY(0) scale(1); opacity:.6; }
       50% { transform:translateY(-30px) scale(1.15); opacity:.9; }
     }
+    @keyframes ccBenefitFloat {
+      0%,100% { transform:translateY(0); }
+      50% { transform:translateY(-7px); }
+    }
 
     /* ─── HAMBURGER & MOBILE MENU ─── */
     .cc-hamburger {
@@ -565,11 +590,37 @@
     .cc-mobile-menu .cc-mm-book:hover { background:#4f46e5 !important; color:#fff !important; }
 
     /* ─── RESPONSIVE ─── */
+    @media(max-width:1360px) {
+      .cc-nav { padding:12px 30px; }
+      .cc-hero { padding:0 30px 64px; }
+      .cc-announce-pill { margin-left:0; }
+      .cc-hero-inner { max-width:1160px; gap:30px; padding-top:20px; }
+      .cc-hero-title { font-size:clamp(40px,4.5vw,62px); letter-spacing:-1px; }
+      .cc-hero-desc { font-size:16px; margin-bottom:30px; max-width:520px; }
+      .cc-hero-right { height:500px; }
+      .cc-3d-scene { transform:scale(.92); transform-origin:center; }
+      .cc-hero-card { width:258px; padding:26px; }
+    }
+    @media(max-width:1180px) {
+      .cc-hero-inner { grid-template-columns:1.06fr .94fr; gap:18px; }
+      .cc-hero-title { font-size:clamp(36px,4vw,52px); }
+      .cc-hero-desc { font-size:15px; line-height:1.65; margin-bottom:24px; }
+      .cc-hero-form { max-width:100%; }
+      .cc-hero-right { height:450px; }
+      .cc-3d-scene { transform:scale(.84); transform-origin:center; }
+      .cc-hero-card { width:238px; padding:22px; }
+      .cc-hero-card-stat strong { font-size:18px; }
+    }
     @media(max-width:1024px) {
       .cc-hero-inner { grid-template-columns:1fr; }
       .cc-hero-right { display:none; }
       .cc-features-grid,.cc-member-grid,.cc-how-steps,.cc-pricing-grid,.cc-test-grid { grid-template-columns:1fr; max-width:640px; margin-left:auto; margin-right:auto; }
       .cc-member-photo-grid { grid-template-columns:repeat(2,1fr); }
+      .cc-gallery-benefits {
+        position:static; display:flex; flex-wrap:wrap; gap:10px;
+        margin:0 0 18px; pointer-events:auto;
+      }
+      .cc-gallery-benefit { position:static; animation:none; }
       .cc-gallery-grid { grid-template-columns:1fr 1fr; }
       .cc-gallery-item:nth-child(1) { grid-row:auto; aspect-ratio:4/3; }
       .cc-footer-grid { grid-template-columns:1fr 1fr; }
@@ -658,6 +709,7 @@
       .cc-feature-card:hover { transform:none; }
       .cc-price-card:hover { transform:none; }
       .cc-test-card:hover { transform:none; }
+      .cc-gallery-benefit { font-size:11px; padding:8px 12px; }
     }
   </style>
 </head>
@@ -777,26 +829,50 @@
       <div class="cc-section-label">Profissionais em ação</div>
       <h2 class="cc-section-title">Cleaners afiliados cuidando de lares reais</h2>
       <p class="cc-section-desc">Conheça o padrão de execução da nossa comunidade: técnicas consistentes, atenção aos detalhes e cuidado com cada ambiente.</p>
-      <div class="cc-gallery-grid">
-        <div class="cc-gallery-item" data-cc-anim>
-          <img src="https://images.unsplash.com/photo-1758523670739-0d26a3ee976d?w=800&h=1000&fit=crop&q=80&auto=format" alt="Profissional aspirando sala de estar" loading="lazy">
-          <div class="cc-gallery-overlay"><span>Aspiração e acabamento</span></div>
+      <div class="cc-gallery-stage">
+        <div class="cc-gallery-benefits">
+          <a href="#services" class="cc-gallery-benefit cc-benefit-1">Cleaners verificados</a>
+          <a href="#services" class="cc-gallery-benefit cc-benefit-2">Treinamento contínuo</a>
+          <a href="#services" class="cc-gallery-benefit cc-benefit-3">Comunidade ativa</a>
+          <a href="#services" class="cc-gallery-benefit cc-benefit-4">Padrão de qualidade</a>
         </div>
-        <div class="cc-gallery-item" data-cc-anim>
-          <img src="https://images.unsplash.com/photo-1758273238415-01ec03d9ef27?w=600&h=450&fit=crop&q=80&auto=format" alt="Cleaner passando esfregão em piso" loading="lazy">
-          <div class="cc-gallery-overlay"><span>Limpeza de piso</span></div>
-        </div>
-        <div class="cc-gallery-item" data-cc-anim>
-          <img src="https://images.unsplash.com/photo-1758272421751-963195322eaa?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional limpando móveis com luvas" loading="lazy">
-          <div class="cc-gallery-overlay"><span>Detalhamento de móveis</span></div>
-        </div>
-        <div class="cc-gallery-item" data-cc-anim>
-          <img src="https://images.unsplash.com/photo-1765970101844-67efbb2de141?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional ajustando equipamento de limpeza" loading="lazy">
-          <div class="cc-gallery-overlay"><span>Equipamento profissional</span></div>
-        </div>
-        <div class="cc-gallery-item" data-cc-anim>
-          <img src="https://images.unsplash.com/photo-1758272421995-e993f97fae22?w=600&h=450&fit=crop&q=80&auto=format" alt="Cleaner com EPI realizando limpeza" loading="lazy">
-          <div class="cc-gallery-overlay"><span>Padrão e segurança</span></div>
+        <div class="cc-gallery-grid">
+          <div class="cc-gallery-item" data-cc-anim>
+            <img src="https://images.unsplash.com/photo-1758523670739-0d26a3ee976d?w=800&h=1000&fit=crop&q=80&auto=format" alt="Profissional aspirando sala de estar" loading="lazy">
+            <div class="cc-gallery-overlay"><span>Aspiração e acabamento</span></div>
+          </div>
+          <div class="cc-gallery-item" data-cc-anim>
+            <img src="https://images.unsplash.com/photo-1758273238415-01ec03d9ef27?w=600&h=450&fit=crop&q=80&auto=format" alt="Cleaner passando esfregão em piso" loading="lazy">
+            <div class="cc-gallery-overlay"><span>Limpeza de piso</span></div>
+          </div>
+          <div class="cc-gallery-item" data-cc-anim>
+            <img src="https://images.unsplash.com/photo-1758272421751-963195322eaa?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional limpando móveis com luvas" loading="lazy">
+            <div class="cc-gallery-overlay"><span>Detalhamento de móveis</span></div>
+          </div>
+          <div class="cc-gallery-item" data-cc-anim>
+            <img src="https://images.unsplash.com/photo-1765970101844-67efbb2de141?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional ajustando equipamento de limpeza" loading="lazy">
+            <div class="cc-gallery-overlay"><span>Equipamento profissional</span></div>
+          </div>
+          <div class="cc-gallery-item" data-cc-anim>
+            <img src="https://images.unsplash.com/photo-1758272421995-e993f97fae22?w=600&h=450&fit=crop&q=80&auto=format" alt="Cleaner com EPI realizando limpeza" loading="lazy">
+            <div class="cc-gallery-overlay"><span>Padrão e segurança</span></div>
+          </div>
+          <div class="cc-gallery-item" data-cc-anim>
+            <img src="https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional higienizando bancada de cozinha" loading="lazy">
+            <div class="cc-gallery-overlay"><span>Higienização de cozinha</span></div>
+          </div>
+          <div class="cc-gallery-item" data-cc-anim>
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional limpando vidro e superfícies" loading="lazy">
+            <div class="cc-gallery-overlay"><span>Vidros e superfícies</span></div>
+          </div>
+          <div class="cc-gallery-item" data-cc-anim>
+            <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=600&h=450&fit=crop&q=80&auto=format" alt="Equipe de limpeza em ambiente residencial" loading="lazy">
+            <div class="cc-gallery-overlay"><span>Atendimento em equipe</span></div>
+          </div>
+          <div class="cc-gallery-item" data-cc-anim>
+            <img src="https://images.unsplash.com/photo-1582582494700-cd76f2f5b7e2?w=600&h=450&fit=crop&q=80&auto=format" alt="Profissional desinfetando banheiro" loading="lazy">
+            <div class="cc-gallery-overlay"><span>Desinfecção técnica</span></div>
+          </div>
         </div>
       </div>
     </div>
