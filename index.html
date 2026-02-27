@@ -108,6 +108,7 @@
       margin-bottom:36px; line-height:1.75; font-weight:500;
     }
     .cc-hero-form { display:flex; gap:10px; max-width:440px; }
+    .cc-hero-form-single { max-width:250px; }
     .cc-hero-input {
       flex:1; padding:15px 22px; border:none; border-radius:14px;
       font-size:15px; font-family:inherit; background:#fff; color:#0a2540;
@@ -299,28 +300,7 @@
       z-index:1;
     }
     .cc-compare-before img {
-      filter:brightness(0.68) saturate(0.35) sepia(0.4) contrast(1.1) hue-rotate(-8deg);
-    }
-    .cc-compare-before::after {
-      content:''; position:absolute; inset:0;
-      background:
-        radial-gradient(ellipse 30% 25% at 15% 70%, rgba(80,50,20,.35), transparent),
-        radial-gradient(ellipse 25% 20% at 75% 30%, rgba(60,40,10,.3), transparent),
-        radial-gradient(ellipse 35% 30% at 50% 50%, rgba(90,70,30,.18), transparent),
-        radial-gradient(circle 8% at 30% 40%, rgba(50,30,10,.25), transparent),
-        radial-gradient(circle 5% at 65% 65%, rgba(70,40,15,.2), transparent),
-        radial-gradient(circle 6% at 80% 80%, rgba(50,30,10,.22), transparent),
-        radial-gradient(circle 4% at 20% 20%, rgba(60,35,10,.18), transparent);
-      mix-blend-mode:multiply; pointer-events:none;
-    }
-    .cc-compare-before .cc-dirt-overlay {
-      position:absolute; inset:0; pointer-events:none; overflow:hidden;
-    }
-    .cc-compare-before .cc-dirt-overlay::before {
-      content:''; position:absolute; inset:-10%;
-      background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
-      opacity:.6;
+      filter:none;
     }
     /* "After" clean version */
     .cc-compare-after {
@@ -328,7 +308,7 @@
       clip-path:inset(0 0 0 50%);
     }
     .cc-compare-after img {
-      filter:brightness(1.04) saturate(1.1) contrast(1.02);
+      filter:none;
     }
     .cc-compare-handle {
       position:absolute; top:0; bottom:0; left:50%; width:4px;
@@ -766,9 +746,8 @@
         <p class="cc-hero-desc">
           O Cleaners Club é uma associação para profissionais da limpeza que querem crescer com método, reputação e rede de apoio. Aqui você se afilia, recebe oportunidades e fortalece sua carreira junto a outros especialistas.
         </p>
-        <div class="cc-hero-form">
-          <input class="cc-hero-input" type="email" placeholder="Seu e-mail profissional">
-          <a href="book.html" class="cc-hero-btn">Quero me afiliar <svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="cc-hero-form cc-hero-form-single">
+          <a href="book.html" class="cc-hero-btn">Inscreva-se agora <svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
 
@@ -877,11 +856,10 @@
       </div>
       <div class="cc-compare-wrapper" id="ccCompare">
         <div class="cc-compare-layer cc-compare-before">
-          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=675&fit=crop&q=80" alt="Ambiente antes da limpeza profissional">
-          <div class="cc-dirt-overlay"></div>
+          <img src="compare-before.jpg" alt="Sala antes da limpeza profissional">
         </div>
         <div class="cc-compare-layer cc-compare-after" id="ccCompareAfter">
-          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=675&fit=crop&q=80" alt="Ambiente após limpeza dos associados">
+          <img src="compare-after.jpg" alt="Sala após limpeza profissional">
         </div>
         <div class="cc-compare-handle" id="ccCompareHandle">
           <div class="cc-compare-handle-arrows">
